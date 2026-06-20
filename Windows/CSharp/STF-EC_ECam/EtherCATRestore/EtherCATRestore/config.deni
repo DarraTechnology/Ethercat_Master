@@ -1,0 +1,4092 @@
+﻿<?xml version="1.0" encoding="utf-16" standalone="yes"?>
+<EtherCATConfig xmlns:deni="http://www.darra.com/ethercat/deni">
+  <Config>
+    <Master>
+      <Info>
+        <Name><![CDATA[Darra EtherCAT Master]]></Name>
+        <Destination>ffffffffffff</Destination>
+        <Source>aa1c040da72b</Source>
+        <EtherType>a488</EtherType>
+      </Info>
+      <MailboxStates>
+        <StartAddr>768</StartAddr>
+        <Count>5</Count>
+      </MailboxStates>
+      <InitCmds>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <BeforeSlave>1</BeforeSlave>
+          <Comment><![CDATA[read slave count]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>7</Cmd>
+          <Adp>0</Adp>
+          <Ado>304</Ado>
+          <Data>0000</Data>
+          <Retries>0</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <BeforeSlave>1</BeforeSlave>
+          <Comment><![CDATA[read slave count]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>7</Cmd>
+          <Adp>0</Adp>
+          <Ado>304</Ado>
+          <Data>0000</Data>
+          <Retries>0</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <BeforeSlave>1</BeforeSlave>
+          <Comment><![CDATA[enable ECAT IRQ]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>8</Cmd>
+          <Adp>0</Adp>
+          <Ado>512</Ado>
+          <Data>0400</Data>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <BeforeSlave>1</BeforeSlave>
+          <Comment><![CDATA[clear configured addresses]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>8</Cmd>
+          <Adp>0</Adp>
+          <Ado>16</Ado>
+          <Data>0000</Data>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <BeforeSlave>1</BeforeSlave>
+          <Comment><![CDATA[clear crc register]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>8</Cmd>
+          <Adp>0</Adp>
+          <Ado>768</Ado>
+          <Data>0000000000000000</Data>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>PI</Transition>
+          <Transition>BI</Transition>
+          <Transition>SI</Transition>
+          <Transition>OI</Transition>
+          <BeforeSlave>1</BeforeSlave>
+          <Comment><![CDATA[clear fmmu]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>8</Cmd>
+          <Adp>0</Adp>
+          <Ado>1536</Ado>
+          <DataLength>256</DataLength>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <BeforeSlave>1</BeforeSlave>
+          <Comment><![CDATA[clear sm]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>8</Cmd>
+          <Adp>0</Adp>
+          <Ado>2048</Ado>
+          <DataLength>256</DataLength>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <BeforeSlave>1</BeforeSlave>
+          <Comment><![CDATA[clear dc system time]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>8</Cmd>
+          <Adp>0</Adp>
+          <Ado>2320</Ado>
+          <DataLength>32</DataLength>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <BeforeSlave>1</BeforeSlave>
+          <Comment><![CDATA[clear dc cycle cfg]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>8</Cmd>
+          <Adp>0</Adp>
+          <Ado>2433</Ado>
+          <Data>00</Data>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <BeforeSlave>1</BeforeSlave>
+          <Comment><![CDATA[reset dc speed]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>8</Cmd>
+          <Adp>0</Adp>
+          <Ado>2352</Ado>
+          <Data>0010</Data>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <BeforeSlave>1</BeforeSlave>
+          <Comment><![CDATA[configure dc filter]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>8</Cmd>
+          <Adp>0</Adp>
+          <Ado>2356</Ado>
+          <Data>000c</Data>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <BeforeSlave>1</BeforeSlave>
+          <Comment><![CDATA[en/disable second physical address]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>8</Cmd>
+          <Adp>0</Adp>
+          <Ado>259</Ado>
+          <Data>00</Data>
+          <Retries>3</Retries>
+        </InitCmd>
+      </InitCmds>
+      <deni:MasterConfig>
+        <deni:Interface>\Device\NPF_{65B45E31-38E7-4EEC-AE12-89AA97358DE7}</deni:Interface>
+        <deni:InterfaceDescription>Realtek PCIe GbE Family Controller</deni:InterfaceDescription>
+        <deni:InterfaceMAC>aa:1c:04:0d:a7:2b</deni:InterfaceMAC>
+        <deni:CycleTime unit="ns">1000000</deni:CycleTime>
+        <deni:DcCycleTime unit="ns">0</deni:DcCycleTime>
+        <deni:ExpectedSlaveCount>5</deni:ExpectedSlaveCount>
+        <deni:Transport>
+          <deni:UseUdp>false</deni:UseUdp>
+        </deni:Transport>
+        <deni:Performance>
+          <deni:OverlappingGroups>false</deni:OverlappingGroups>
+          <deni:PackedMode>false</deni:PackedMode>
+          <deni:FrameHighPriority>false</deni:FrameHighPriority>
+          <deni:CpuAffinity>-1</deni:CpuAffinity>
+          <deni:AdaptiveTimeout>true</deni:AdaptiveTimeout>
+          <deni:FrameRepeatCount>1</deni:FrameRepeatCount>
+          <deni:FilterThreshold>3</deni:FilterThreshold>
+          <deni:MutexProtection>true</deni:MutexProtection>
+        </deni:Performance>
+        <deni:StateTransitionTimeouts>
+          <deni:InitToPreOp>2000</deni:InitToPreOp>
+          <deni:PreOpToSafeOp>3000</deni:PreOpToSafeOp>
+          <deni:SafeOpToOp>8000</deni:SafeOpToOp>
+        </deni:StateTransitionTimeouts>
+        <deni:Watchdog>
+          <deni:ProcessDataWatchdogMs>100</deni:ProcessDataWatchdogMs>
+        </deni:Watchdog>
+        <deni:GroupConfig>
+          <deni:SlaveGroupAssignment>
+            <deni:Slave Index="1" Group="1" />
+            <deni:Slave Index="2" Group="1" />
+            <deni:Slave Index="3" Group="1" />
+            <deni:Slave Index="4" Group="1" />
+            <deni:Slave Index="5" Group="1" />
+          </deni:SlaveGroupAssignment>
+        </deni:GroupConfig>
+        <deni:DistributedClocks enabled="false" />
+        <deni:MasterIdentity>
+          <deni:VendorId>0x00001164</deni:VendorId>
+          <deni:ProductCode>0x00000001</deni:ProductCode>
+          <deni:RevisionNo>0x00020006</deni:RevisionNo>
+          <deni:DeviceName>Darra EtherCAT Master</deni:DeviceName>
+          <deni:SwVersion>2.6.0</deni:SwVersion>
+        </deni:MasterIdentity>
+        <deni:Metadata>
+          <deni:SavedDate>2026-06-17 09:09:27</deni:SavedDate>
+          <deni:SavedBy>Administrator</deni:SavedBy>
+          <deni:MachineName>WIN-20260616EHB</deni:MachineName>
+          <deni:DllVersion>0.0.0.0</deni:DllVersion>
+        </deni:Metadata>
+      </deni:MasterConfig>
+    </Master>
+    <Slave>
+      <Info>
+        <Name><![CDATA[STF-EC]]></Name>
+        <PhysAddr>4097</PhysAddr>
+        <AutoIncAddr>65535</AutoIncAddr>
+        <Physics>YY</Physics>
+        <VendorId>#x00000168</VendorId>
+        <ProductCode>#x00000002</ProductCode>
+        <RevisionNo>#x00000001</RevisionNo>
+        <SerialNo>#x00000000</SerialNo>
+        <ProductRevision>STF-EC              </ProductRevision>
+      </Info>
+      <ProcessData>
+        <Send Sm2="true">
+          <BitStart>0</BitStart>
+          <BitLength>232</BitLength>
+        </Send>
+        <Recv Sm3="true">
+          <BitStart>1016</BitStart>
+          <BitLength>280</BitLength>
+        </Recv>
+        <Sm0>
+          <Type>MBoxOut</Type>
+          <StartAddress>4608</StartAddress>
+          <ControlByte>38</ControlByte>
+          <DefaultSize>128</DefaultSize>
+          <Enable>1</Enable>
+        </Sm0>
+        <Sm1>
+          <Type>MBoxIn</Type>
+          <StartAddress>5120</StartAddress>
+          <ControlByte>34</ControlByte>
+          <DefaultSize>128</DefaultSize>
+          <Enable>1</Enable>
+        </Sm1>
+        <Sm2>
+          <Type>Outputs</Type>
+          <StartAddress>6144</StartAddress>
+          <ControlByte>100</ControlByte>
+          <DefaultSize>29</DefaultSize>
+          <Enable>1</Enable>
+          <Watchdog>4000</Watchdog>
+        </Sm2>
+        <Sm3>
+          <Type>Inputs</Type>
+          <StartAddress>7168</StartAddress>
+          <ControlByte>32</ControlByte>
+          <DefaultSize>35</DefaultSize>
+          <Enable>1</Enable>
+          <Watchdog>4000</Watchdog>
+        </Sm3>
+        <RxPdo Sm="2" Fixed="false" Mandatory="false">
+          <Index>#x1600</Index>
+          <Name><![CDATA[RxPDO 1]]></Name>
+          <Entry>
+            <Index>#x6040</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name><![CDATA[ControlWord]]></Name>
+            <DataType>UINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6060</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>8</BitLen>
+            <Name><![CDATA[Modes of operation]]></Name>
+            <DataType>SINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x607A</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Target position]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+        </RxPdo>
+        <RxPdo Sm="2" Fixed="false" Mandatory="false">
+          <Index>#x1601</Index>
+          <Name><![CDATA[RxPDO 2]]></Name>
+          <Entry>
+            <Index>#x6081</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Profile velocity]]></Name>
+            <DataType>UDINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6083</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Profile acceleration]]></Name>
+            <DataType>UDINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6084</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Profile deceleration]]></Name>
+            <DataType>UDINT</DataType>
+          </Entry>
+        </RxPdo>
+        <RxPdo Sm="2" Fixed="false" Mandatory="false">
+          <Index>#x1602</Index>
+          <Name><![CDATA[RxPDO 3]]></Name>
+          <Entry>
+            <Index>#x60FF</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Target Velocity]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+        </RxPdo>
+        <RxPdo Sm="2" Fixed="false" Mandatory="false">
+          <Index>#x1603</Index>
+          <Name><![CDATA[RxPDO 4]]></Name>
+          <Entry>
+            <Index>#x60FE</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Digital outputs]]></Name>
+            <DataType>UDINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x60B8</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name><![CDATA[Touch probe function]]></Name>
+            <DataType>UINT</DataType>
+          </Entry>
+        </RxPdo>
+        <TxPdo Sm="3" Fixed="false" Mandatory="false">
+          <Index>#x1A00</Index>
+          <Name><![CDATA[TxPDO 1]]></Name>
+          <Entry>
+            <Index>#x603F</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name><![CDATA[ErrorCode]]></Name>
+            <DataType>UINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6041</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name><![CDATA[StatusWord]]></Name>
+            <DataType>UINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6061</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>8</BitLen>
+            <Name><![CDATA[Modes of operation display]]></Name>
+            <DataType>SINT</DataType>
+          </Entry>
+        </TxPdo>
+        <TxPdo Sm="3" Fixed="false" Mandatory="false">
+          <Index>#x1A01</Index>
+          <Name><![CDATA[TxPDO 2]]></Name>
+          <Entry>
+            <Index>#x6064</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Position actual value]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+        </TxPdo>
+        <TxPdo Sm="3" Fixed="false" Mandatory="false">
+          <Index>#x1A02</Index>
+          <Name><![CDATA[TxPDO 3]]></Name>
+          <Entry>
+            <Index>#x606C</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Velocity actual value]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+        </TxPdo>
+        <TxPdo Sm="3" Fixed="false" Mandatory="false">
+          <Index>#x1A03</Index>
+          <Name><![CDATA[TxPDO 4]]></Name>
+          <Entry>
+            <Index>#x60FD</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Digital inputs]]></Name>
+            <DataType>UDINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x60B9</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name><![CDATA[Touch probe status]]></Name>
+            <DataType>UINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x60BA</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Touch probe pos1 pos value]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x60BB</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Touch probe pos1 neg value]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x60BC</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Touch probe pos2 pos value]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x60BD</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Touch probe pos2 neg value]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+        </TxPdo>
+      </ProcessData>
+      <Mailbox DataLinkLayer="true">
+        <Send>
+          <Start>4608</Start>
+          <Length>128</Length>
+        </Send>
+        <Recv>
+          <Start>5120</Start>
+          <Length>128</Length>
+          <PollTime>1</PollTime>
+          <StatusBitAddr>0</StatusBitAddr>
+        </Recv>
+        <Protocol>CoE</Protocol>
+      </Mailbox>
+      <InitCmds>
+        <InitCmd>
+          <Transition>PI</Transition>
+          <Transition>BI</Transition>
+          <Transition>SI</Transition>
+          <Transition>OI</Transition>
+          <Comment><![CDATA[set device state to INIT]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>2</Cmd>
+          <Adp>65535</Adp>
+          <Ado>288</Ado>
+          <Data>1100</Data>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[set device state to INIT]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>2</Cmd>
+          <Adp>65535</Adp>
+          <Ado>288</Ado>
+          <Data>1100</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[check device state for INIT]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>1</Cmd>
+          <Adp>65535</Adp>
+          <Ado>304</Ado>
+          <Data>0000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+          <Validate>
+            <Data>0100</Data>
+            <DataMask>1f00</DataMask>
+            <Timeout>1000</Timeout>
+          </Validate>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[check PDI]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>1</Cmd>
+          <Adp>65535</Adp>
+          <Ado>320</Ado>
+          <Data>0000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+          <Validate>
+            <Data>8000</Data>
+            <Timeout>100</Timeout>
+          </Validate>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[set physical address]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>2</Cmd>
+          <Adp>65535</Adp>
+          <Ado>16</Ado>
+          <Data>0110</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[set sm 0 (mailbox out)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4097</Adp>
+          <Ado>2048</Ado>
+          <Data>0012800026000100</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[set sm 1 (mailbox in)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4097</Adp>
+          <Ado>2056</Ado>
+          <Data>0014800022000100</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>SP</Transition>
+          <Transition>OP</Transition>
+          <Comment><![CDATA[set device state to PREOP]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4097</Adp>
+          <Ado>288</Ado>
+          <Data>1200</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>SP</Transition>
+          <Transition>OP</Transition>
+          <Comment><![CDATA[check device state for PREOP]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>4</Cmd>
+          <Adp>4097</Adp>
+          <Ado>304</Ado>
+          <Data>0000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+          <Validate>
+            <Data>0200</Data>
+            <DataMask>1f00</DataMask>
+            <Timeout>1000</Timeout>
+          </Validate>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[set device state to BOOT]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4097</Adp>
+          <Ado>288</Ado>
+          <Data>1300</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[check device state for BOOT]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>4</Cmd>
+          <Adp>4097</Adp>
+          <Ado>304</Ado>
+          <Data>0000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+          <Validate>
+            <Data>0300</Data>
+            <DataMask>1f00</DataMask>
+            <Timeout>1000</Timeout>
+          </Validate>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Comment><![CDATA[set sm 2 (outputs)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4097</Adp>
+          <Ado>2064</Ado>
+          <Data>00181d0064000100</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Comment><![CDATA[set sm 3 (inputs)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4097</Adp>
+          <Ado>2072</Ado>
+          <Data>001c230020000100</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Comment><![CDATA[set fmmu 0 (outputs)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4097</Adp>
+          <Ado>1536</Ado>
+          <Data>000001001d0000070018000201000000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Comment><![CDATA[set fmmu 1 (inputs)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4097</Adp>
+          <Ado>1552</Ado>
+          <Data>7f00010023000007001c000101000000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Comment><![CDATA[set fmmu 2 (mailbox state)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4097</Adp>
+          <Ado>1568</Ado>
+          <Data>2e010100010000070d08000101000000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Transition>OS</Transition>
+          <Comment><![CDATA[set device state to SAFEOP]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4097</Adp>
+          <Ado>288</Ado>
+          <Data>1400</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Transition>OS</Transition>
+          <Comment><![CDATA[check device state for SAFEOP]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>4</Cmd>
+          <Adp>4097</Adp>
+          <Ado>304</Ado>
+          <Data>0000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+          <Validate>
+            <Data>0400</Data>
+            <DataMask>1f00</DataMask>
+            <Timeout>1000</Timeout>
+          </Validate>
+        </InitCmd>
+        <InitCmd>
+          <Transition>SO</Transition>
+          <Comment><![CDATA[set device state to OP]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4097</Adp>
+          <Ado>288</Ado>
+          <Data>1800</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>SO</Transition>
+          <Comment><![CDATA[check device state for OP]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>4</Cmd>
+          <Adp>4097</Adp>
+          <Ado>304</Ado>
+          <Data>0000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+          <Validate>
+            <Data>0800</Data>
+            <DataMask>1f00</DataMask>
+            <Timeout>1000</Timeout>
+          </Validate>
+        </InitCmd>
+      </InitCmds>
+      <DC>
+        <PotentialReferenceClock>true</PotentialReferenceClock>
+        <ReferenceClock>true</ReferenceClock>
+        <CycleTime0>0</CycleTime0>
+        <CycleTime1>0</CycleTime1>
+        <ShiftTime>0</ShiftTime>
+      </DC>
+      <deni:SlaveConfig>
+        <deni:Position>1</deni:Position>
+        <deni:DriveName>STF-EC              </deni:DriveName>
+        <deni:SerialNumber>0x00000000</deni:SerialNumber>
+        <deni:AliasAddress>1</deni:AliasAddress>
+        <deni:MailboxConfig>
+          <deni:WriteOffset>0x1200</deni:WriteOffset>
+          <deni:ReadOffset>0x1400</deni:ReadOffset>
+          <deni:WriteLength>128</deni:WriteLength>
+          <deni:ReadLength>128</deni:ReadLength>
+        </deni:MailboxConfig>
+        <deni:DC>
+          <deni:HasDC>true</deni:HasDC>
+          <deni:Sync0CycleNs>0</deni:Sync0CycleNs>
+          <deni:Sync1CycleNs>0</deni:Sync1CycleNs>
+          <deni:ShiftNs>0</deni:ShiftNs>
+        </deni:DC>
+        <deni:Watchdog>
+          <deni:WdDivider>2498</deni:WdDivider>
+          <deni:WdTimePdi>0</deni:WdTimePdi>
+          <deni:WdTimePd>4000</deni:WdTimePd>
+        </deni:Watchdog>
+        <deni:SyncManagers>
+          <deni:SM index="0">
+            <deni:StartAddr>0x1200</deni:StartAddr>
+            <deni:Length>128</deni:Length>
+            <deni:Flags>0x00010026</deni:Flags>
+            <deni:Type>1</deni:Type>
+          </deni:SM>
+          <deni:SM index="1">
+            <deni:StartAddr>0x1400</deni:StartAddr>
+            <deni:Length>128</deni:Length>
+            <deni:Flags>0x00010022</deni:Flags>
+            <deni:Type>2</deni:Type>
+          </deni:SM>
+          <deni:SM index="2">
+            <deni:StartAddr>0x1800</deni:StartAddr>
+            <deni:Length>29</deni:Length>
+            <deni:Flags>0x00010064</deni:Flags>
+            <deni:Type>3</deni:Type>
+          </deni:SM>
+          <deni:SM index="3">
+            <deni:StartAddr>0x1C00</deni:StartAddr>
+            <deni:Length>35</deni:Length>
+            <deni:Flags>0x00010020</deni:Flags>
+            <deni:Type>4</deni:Type>
+          </deni:SM>
+        </deni:SyncManagers>
+        <deni:PDOConfig>
+          <deni:WriteAssignment>true</deni:WriteAssignment>
+          <deni:WriteConfiguration>true</deni:WriteConfiguration>
+          <deni:CompleteAccess>true</deni:CompleteAccess>
+        </deni:PDOConfig>
+        <deni:DeviceInfo>
+          <deni:HasMDP>false</deni:HasMDP>
+          <deni:BlockLRW>false</deni:BlockLRW>
+          <deni:Dtype>0</deni:Dtype>
+          <deni:Topology>2</deni:Topology>
+          <deni:ActivePorts>3</deni:ActivePorts>
+          <deni:SupportsFrameRepeat>false</deni:SupportsFrameRepeat>
+        </deni:DeviceInfo>
+        <deni:Protocols>
+          <deni:CoE>true</deni:CoE>
+          <deni:FoE>false</deni:FoE>
+          <deni:EoE>false</deni:EoE>
+          <deni:SoE>false</deni:SoE>
+          <deni:AoE>false</deni:AoE>
+          <deni:VoE>false</deni:VoE>
+        </deni:Protocols>
+        <deni:PDOMappings>
+          <deni:RxPdo index="#x1600" name="RxPDO 1">
+            <deni:Entry index="#x6040" subIndex="#x0" bitLength="16" name="ControlWord" dataType="UINT" />
+            <deni:Entry index="#x6060" subIndex="#x0" bitLength="8" name="Modes of operation" dataType="SINT" />
+            <deni:Entry index="#x607a" subIndex="#x0" bitLength="32" name="Target position" dataType="DINT" />
+          </deni:RxPdo>
+          <deni:RxPdo index="#x1601" name="RxPDO 2">
+            <deni:Entry index="#x6081" subIndex="#x0" bitLength="32" name="Profile velocity" dataType="UDINT" />
+            <deni:Entry index="#x6083" subIndex="#x0" bitLength="32" name="Profile acceleration" dataType="UDINT" />
+            <deni:Entry index="#x6084" subIndex="#x0" bitLength="32" name="Profile deceleration" dataType="UDINT" />
+          </deni:RxPdo>
+          <deni:RxPdo index="#x1602" name="RxPDO 3">
+            <deni:Entry index="#x60ff" subIndex="#x0" bitLength="32" name="Target Velocity" dataType="DINT" />
+          </deni:RxPdo>
+          <deni:RxPdo index="#x1603" name="RxPDO 4">
+            <deni:Entry index="#x60FE" subIndex="#x1" bitLength="32" name="Digital outputs" dataType="UDINT" />
+            <deni:Entry index="#x60B8" subIndex="#x0" bitLength="16" name="Touch probe function" dataType="UINT" />
+          </deni:RxPdo>
+          <deni:TxPdo index="#x1A00" name="TxPDO 1">
+            <deni:Entry index="#x603F" subIndex="#x0" bitLength="16" name="ErrorCode" dataType="UINT" />
+            <deni:Entry index="#x6041" subIndex="#x0" bitLength="16" name="StatusWord" dataType="UINT" />
+            <deni:Entry index="#x6061" subIndex="#x0" bitLength="8" name="Modes of operation display" dataType="SINT" />
+          </deni:TxPdo>
+          <deni:TxPdo index="#x1A01" name="TxPDO 2">
+            <deni:Entry index="#x6064" subIndex="#x0" bitLength="32" name="Position actual value" dataType="DINT" />
+          </deni:TxPdo>
+          <deni:TxPdo index="#x1A02" name="TxPDO 3">
+            <deni:Entry index="#x606c" subIndex="#x0" bitLength="32" name="Velocity actual value" dataType="DINT" />
+          </deni:TxPdo>
+          <deni:TxPdo index="#x1A03" name="TxPDO 4">
+            <deni:Entry index="#x60FD" subIndex="#x0" bitLength="32" name="Digital inputs" dataType="UDINT" />
+            <deni:Entry index="#x60B9" subIndex="#x0" bitLength="16" name="Touch probe status" dataType="UINT" />
+            <deni:Entry index="#x60BA" subIndex="#x0" bitLength="32" name="Touch probe pos1 pos value" dataType="DINT" />
+            <deni:Entry index="#x60BB" subIndex="#x0" bitLength="32" name="Touch probe pos1 neg value" dataType="DINT" />
+            <deni:Entry index="#x60BC" subIndex="#x0" bitLength="32" name="Touch probe pos2 pos value" dataType="DINT" />
+            <deni:Entry index="#x60BD" subIndex="#x0" bitLength="32" name="Touch probe pos2 neg value" dataType="DINT" />
+          </deni:TxPdo>
+        </deni:PDOMappings>
+      </deni:SlaveConfig>
+    </Slave>
+    <Slave>
+      <Info>
+        <Name><![CDATA[STF-EC]]></Name>
+        <PhysAddr>4098</PhysAddr>
+        <AutoIncAddr>65534</AutoIncAddr>
+        <Physics>YY</Physics>
+        <VendorId>#x00000168</VendorId>
+        <ProductCode>#x00000002</ProductCode>
+        <RevisionNo>#x00000001</RevisionNo>
+        <SerialNo>#x00000000</SerialNo>
+        <ProductRevision>STF-EC              </ProductRevision>
+      </Info>
+      <ProcessData>
+        <Send Sm2="true">
+          <BitStart>232</BitStart>
+          <BitLength>232</BitLength>
+        </Send>
+        <Recv Sm3="true">
+          <BitStart>1296</BitStart>
+          <BitLength>280</BitLength>
+        </Recv>
+        <Sm0>
+          <Type>MBoxOut</Type>
+          <StartAddress>4608</StartAddress>
+          <ControlByte>38</ControlByte>
+          <DefaultSize>128</DefaultSize>
+          <Enable>1</Enable>
+        </Sm0>
+        <Sm1>
+          <Type>MBoxIn</Type>
+          <StartAddress>5120</StartAddress>
+          <ControlByte>34</ControlByte>
+          <DefaultSize>128</DefaultSize>
+          <Enable>1</Enable>
+        </Sm1>
+        <Sm2>
+          <Type>Outputs</Type>
+          <StartAddress>6144</StartAddress>
+          <ControlByte>100</ControlByte>
+          <DefaultSize>29</DefaultSize>
+          <Enable>1</Enable>
+          <Watchdog>4000</Watchdog>
+        </Sm2>
+        <Sm3>
+          <Type>Inputs</Type>
+          <StartAddress>7168</StartAddress>
+          <ControlByte>32</ControlByte>
+          <DefaultSize>35</DefaultSize>
+          <Enable>1</Enable>
+          <Watchdog>4000</Watchdog>
+        </Sm3>
+        <RxPdo Sm="2" Fixed="false" Mandatory="false">
+          <Index>#x1600</Index>
+          <Name><![CDATA[RxPDO 1]]></Name>
+          <Entry>
+            <Index>#x6040</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name><![CDATA[ControlWord]]></Name>
+            <DataType>UINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6060</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>8</BitLen>
+            <Name><![CDATA[Modes of operation]]></Name>
+            <DataType>SINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x607A</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Target position]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+        </RxPdo>
+        <RxPdo Sm="2" Fixed="false" Mandatory="false">
+          <Index>#x1601</Index>
+          <Name><![CDATA[RxPDO 2]]></Name>
+          <Entry>
+            <Index>#x6081</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Profile velocity]]></Name>
+            <DataType>UDINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6083</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Profile acceleration]]></Name>
+            <DataType>UDINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6084</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Profile deceleration]]></Name>
+            <DataType>UDINT</DataType>
+          </Entry>
+        </RxPdo>
+        <RxPdo Sm="2" Fixed="false" Mandatory="false">
+          <Index>#x1602</Index>
+          <Name><![CDATA[RxPDO 3]]></Name>
+          <Entry>
+            <Index>#x60FF</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Target Velocity]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+        </RxPdo>
+        <RxPdo Sm="2" Fixed="false" Mandatory="false">
+          <Index>#x1603</Index>
+          <Name><![CDATA[RxPDO 4]]></Name>
+          <Entry>
+            <Index>#x60FE</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Digital outputs]]></Name>
+            <DataType>UDINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x60B8</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name><![CDATA[Touch probe function]]></Name>
+            <DataType>UINT</DataType>
+          </Entry>
+        </RxPdo>
+        <TxPdo Sm="3" Fixed="false" Mandatory="false">
+          <Index>#x1A00</Index>
+          <Name><![CDATA[TxPDO 1]]></Name>
+          <Entry>
+            <Index>#x603F</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name><![CDATA[ErrorCode]]></Name>
+            <DataType>UINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6041</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name><![CDATA[StatusWord]]></Name>
+            <DataType>UINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6061</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>8</BitLen>
+            <Name><![CDATA[Modes of operation display]]></Name>
+            <DataType>SINT</DataType>
+          </Entry>
+        </TxPdo>
+        <TxPdo Sm="3" Fixed="false" Mandatory="false">
+          <Index>#x1A01</Index>
+          <Name><![CDATA[TxPDO 2]]></Name>
+          <Entry>
+            <Index>#x6064</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Position actual value]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+        </TxPdo>
+        <TxPdo Sm="3" Fixed="false" Mandatory="false">
+          <Index>#x1A02</Index>
+          <Name><![CDATA[TxPDO 3]]></Name>
+          <Entry>
+            <Index>#x606C</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Velocity actual value]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+        </TxPdo>
+        <TxPdo Sm="3" Fixed="false" Mandatory="false">
+          <Index>#x1A03</Index>
+          <Name><![CDATA[TxPDO 4]]></Name>
+          <Entry>
+            <Index>#x60FD</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Digital inputs]]></Name>
+            <DataType>UDINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x60B9</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name><![CDATA[Touch probe status]]></Name>
+            <DataType>UINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x60BA</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Touch probe pos1 pos value]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x60BB</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Touch probe pos1 neg value]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x60BC</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Touch probe pos2 pos value]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x60BD</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Touch probe pos2 neg value]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+        </TxPdo>
+      </ProcessData>
+      <Mailbox DataLinkLayer="true">
+        <Send>
+          <Start>4608</Start>
+          <Length>128</Length>
+        </Send>
+        <Recv>
+          <Start>5120</Start>
+          <Length>128</Length>
+          <PollTime>1</PollTime>
+          <StatusBitAddr>1</StatusBitAddr>
+        </Recv>
+        <Protocol>CoE</Protocol>
+      </Mailbox>
+      <InitCmds>
+        <InitCmd>
+          <Transition>PI</Transition>
+          <Transition>BI</Transition>
+          <Transition>SI</Transition>
+          <Transition>OI</Transition>
+          <Comment><![CDATA[set device state to INIT]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>2</Cmd>
+          <Adp>65534</Adp>
+          <Ado>288</Ado>
+          <Data>1100</Data>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[set device state to INIT]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>2</Cmd>
+          <Adp>65534</Adp>
+          <Ado>288</Ado>
+          <Data>1100</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[check device state for INIT]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>1</Cmd>
+          <Adp>65534</Adp>
+          <Ado>304</Ado>
+          <Data>0000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+          <Validate>
+            <Data>0100</Data>
+            <DataMask>1f00</DataMask>
+            <Timeout>1000</Timeout>
+          </Validate>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[check PDI]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>1</Cmd>
+          <Adp>65534</Adp>
+          <Ado>320</Ado>
+          <Data>0000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+          <Validate>
+            <Data>8000</Data>
+            <Timeout>100</Timeout>
+          </Validate>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[set physical address]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>2</Cmd>
+          <Adp>65534</Adp>
+          <Ado>16</Ado>
+          <Data>0210</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[set sm 0 (mailbox out)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4098</Adp>
+          <Ado>2048</Ado>
+          <Data>0012800026000100</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[set sm 1 (mailbox in)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4098</Adp>
+          <Ado>2056</Ado>
+          <Data>0014800022000100</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>SP</Transition>
+          <Transition>OP</Transition>
+          <Comment><![CDATA[set device state to PREOP]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4098</Adp>
+          <Ado>288</Ado>
+          <Data>1200</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>SP</Transition>
+          <Transition>OP</Transition>
+          <Comment><![CDATA[check device state for PREOP]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>4</Cmd>
+          <Adp>4098</Adp>
+          <Ado>304</Ado>
+          <Data>0000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+          <Validate>
+            <Data>0200</Data>
+            <DataMask>1f00</DataMask>
+            <Timeout>1000</Timeout>
+          </Validate>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[set device state to BOOT]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4098</Adp>
+          <Ado>288</Ado>
+          <Data>1300</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[check device state for BOOT]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>4</Cmd>
+          <Adp>4098</Adp>
+          <Ado>304</Ado>
+          <Data>0000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+          <Validate>
+            <Data>0300</Data>
+            <DataMask>1f00</DataMask>
+            <Timeout>1000</Timeout>
+          </Validate>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Comment><![CDATA[set sm 2 (outputs)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4098</Adp>
+          <Ado>2064</Ado>
+          <Data>00181d0064000100</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Comment><![CDATA[set sm 3 (inputs)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4098</Adp>
+          <Ado>2072</Ado>
+          <Data>001c230020000100</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Comment><![CDATA[set fmmu 0 (outputs)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4098</Adp>
+          <Ado>1536</Ado>
+          <Data>1d0001001d0000070018000201000000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Comment><![CDATA[set fmmu 1 (inputs)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4098</Adp>
+          <Ado>1552</Ado>
+          <Data>a200010023000007001c000101000000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Comment><![CDATA[set fmmu 2 (mailbox state)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4098</Adp>
+          <Ado>1568</Ado>
+          <Data>2f010100010000070d08000101000000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Transition>OS</Transition>
+          <Comment><![CDATA[set device state to SAFEOP]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4098</Adp>
+          <Ado>288</Ado>
+          <Data>1400</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Transition>OS</Transition>
+          <Comment><![CDATA[check device state for SAFEOP]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>4</Cmd>
+          <Adp>4098</Adp>
+          <Ado>304</Ado>
+          <Data>0000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+          <Validate>
+            <Data>0400</Data>
+            <DataMask>1f00</DataMask>
+            <Timeout>1000</Timeout>
+          </Validate>
+        </InitCmd>
+        <InitCmd>
+          <Transition>SO</Transition>
+          <Comment><![CDATA[set device state to OP]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4098</Adp>
+          <Ado>288</Ado>
+          <Data>1800</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>SO</Transition>
+          <Comment><![CDATA[check device state for OP]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>4</Cmd>
+          <Adp>4098</Adp>
+          <Ado>304</Ado>
+          <Data>0000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+          <Validate>
+            <Data>0800</Data>
+            <DataMask>1f00</DataMask>
+            <Timeout>1000</Timeout>
+          </Validate>
+        </InitCmd>
+      </InitCmds>
+      <PreviousPort Selected="true">
+        <Port>B</Port>
+        <PhysAddr>1</PhysAddr>
+      </PreviousPort>
+      <DC>
+        <CycleTime0>0</CycleTime0>
+        <CycleTime1>0</CycleTime1>
+        <ShiftTime>0</ShiftTime>
+      </DC>
+      <deni:SlaveConfig>
+        <deni:Position>2</deni:Position>
+        <deni:DriveName>STF-EC              </deni:DriveName>
+        <deni:SerialNumber>0x00000000</deni:SerialNumber>
+        <deni:AliasAddress>2</deni:AliasAddress>
+        <deni:MailboxConfig>
+          <deni:WriteOffset>0x1200</deni:WriteOffset>
+          <deni:ReadOffset>0x1400</deni:ReadOffset>
+          <deni:WriteLength>128</deni:WriteLength>
+          <deni:ReadLength>128</deni:ReadLength>
+        </deni:MailboxConfig>
+        <deni:DC>
+          <deni:HasDC>true</deni:HasDC>
+          <deni:Sync0CycleNs>0</deni:Sync0CycleNs>
+          <deni:Sync1CycleNs>0</deni:Sync1CycleNs>
+          <deni:ShiftNs>0</deni:ShiftNs>
+        </deni:DC>
+        <deni:Watchdog>
+          <deni:WdDivider>2498</deni:WdDivider>
+          <deni:WdTimePdi>0</deni:WdTimePdi>
+          <deni:WdTimePd>4000</deni:WdTimePd>
+        </deni:Watchdog>
+        <deni:SyncManagers>
+          <deni:SM index="0">
+            <deni:StartAddr>0x1200</deni:StartAddr>
+            <deni:Length>128</deni:Length>
+            <deni:Flags>0x00010026</deni:Flags>
+            <deni:Type>1</deni:Type>
+          </deni:SM>
+          <deni:SM index="1">
+            <deni:StartAddr>0x1400</deni:StartAddr>
+            <deni:Length>128</deni:Length>
+            <deni:Flags>0x00010022</deni:Flags>
+            <deni:Type>2</deni:Type>
+          </deni:SM>
+          <deni:SM index="2">
+            <deni:StartAddr>0x1800</deni:StartAddr>
+            <deni:Length>29</deni:Length>
+            <deni:Flags>0x00010064</deni:Flags>
+            <deni:Type>3</deni:Type>
+          </deni:SM>
+          <deni:SM index="3">
+            <deni:StartAddr>0x1C00</deni:StartAddr>
+            <deni:Length>35</deni:Length>
+            <deni:Flags>0x00010020</deni:Flags>
+            <deni:Type>4</deni:Type>
+          </deni:SM>
+        </deni:SyncManagers>
+        <deni:PDOConfig>
+          <deni:WriteAssignment>true</deni:WriteAssignment>
+          <deni:WriteConfiguration>true</deni:WriteConfiguration>
+          <deni:CompleteAccess>true</deni:CompleteAccess>
+        </deni:PDOConfig>
+        <deni:DeviceInfo>
+          <deni:HasMDP>false</deni:HasMDP>
+          <deni:BlockLRW>false</deni:BlockLRW>
+          <deni:Dtype>0</deni:Dtype>
+          <deni:Topology>2</deni:Topology>
+          <deni:ActivePorts>3</deni:ActivePorts>
+          <deni:SupportsFrameRepeat>false</deni:SupportsFrameRepeat>
+        </deni:DeviceInfo>
+        <deni:Protocols>
+          <deni:CoE>true</deni:CoE>
+          <deni:FoE>false</deni:FoE>
+          <deni:EoE>false</deni:EoE>
+          <deni:SoE>false</deni:SoE>
+          <deni:AoE>false</deni:AoE>
+          <deni:VoE>false</deni:VoE>
+        </deni:Protocols>
+        <deni:PDOMappings>
+          <deni:RxPdo index="#x1600" name="RxPDO 1">
+            <deni:Entry index="#x6040" subIndex="#x0" bitLength="16" name="ControlWord" dataType="UINT" />
+            <deni:Entry index="#x6060" subIndex="#x0" bitLength="8" name="Modes of operation" dataType="SINT" />
+            <deni:Entry index="#x607a" subIndex="#x0" bitLength="32" name="Target position" dataType="DINT" />
+          </deni:RxPdo>
+          <deni:RxPdo index="#x1601" name="RxPDO 2">
+            <deni:Entry index="#x6081" subIndex="#x0" bitLength="32" name="Profile velocity" dataType="UDINT" />
+            <deni:Entry index="#x6083" subIndex="#x0" bitLength="32" name="Profile acceleration" dataType="UDINT" />
+            <deni:Entry index="#x6084" subIndex="#x0" bitLength="32" name="Profile deceleration" dataType="UDINT" />
+          </deni:RxPdo>
+          <deni:RxPdo index="#x1602" name="RxPDO 3">
+            <deni:Entry index="#x60ff" subIndex="#x0" bitLength="32" name="Target Velocity" dataType="DINT" />
+          </deni:RxPdo>
+          <deni:RxPdo index="#x1603" name="RxPDO 4">
+            <deni:Entry index="#x60FE" subIndex="#x1" bitLength="32" name="Digital outputs" dataType="UDINT" />
+            <deni:Entry index="#x60B8" subIndex="#x0" bitLength="16" name="Touch probe function" dataType="UINT" />
+          </deni:RxPdo>
+          <deni:TxPdo index="#x1A00" name="TxPDO 1">
+            <deni:Entry index="#x603F" subIndex="#x0" bitLength="16" name="ErrorCode" dataType="UINT" />
+            <deni:Entry index="#x6041" subIndex="#x0" bitLength="16" name="StatusWord" dataType="UINT" />
+            <deni:Entry index="#x6061" subIndex="#x0" bitLength="8" name="Modes of operation display" dataType="SINT" />
+          </deni:TxPdo>
+          <deni:TxPdo index="#x1A01" name="TxPDO 2">
+            <deni:Entry index="#x6064" subIndex="#x0" bitLength="32" name="Position actual value" dataType="DINT" />
+          </deni:TxPdo>
+          <deni:TxPdo index="#x1A02" name="TxPDO 3">
+            <deni:Entry index="#x606c" subIndex="#x0" bitLength="32" name="Velocity actual value" dataType="DINT" />
+          </deni:TxPdo>
+          <deni:TxPdo index="#x1A03" name="TxPDO 4">
+            <deni:Entry index="#x60FD" subIndex="#x0" bitLength="32" name="Digital inputs" dataType="UDINT" />
+            <deni:Entry index="#x60B9" subIndex="#x0" bitLength="16" name="Touch probe status" dataType="UINT" />
+            <deni:Entry index="#x60BA" subIndex="#x0" bitLength="32" name="Touch probe pos1 pos value" dataType="DINT" />
+            <deni:Entry index="#x60BB" subIndex="#x0" bitLength="32" name="Touch probe pos1 neg value" dataType="DINT" />
+            <deni:Entry index="#x60BC" subIndex="#x0" bitLength="32" name="Touch probe pos2 pos value" dataType="DINT" />
+            <deni:Entry index="#x60BD" subIndex="#x0" bitLength="32" name="Touch probe pos2 neg value" dataType="DINT" />
+          </deni:TxPdo>
+        </deni:PDOMappings>
+      </deni:SlaveConfig>
+    </Slave>
+    <Slave>
+      <Info>
+        <Name><![CDATA[STF-EC]]></Name>
+        <PhysAddr>4099</PhysAddr>
+        <AutoIncAddr>65533</AutoIncAddr>
+        <Physics>YY</Physics>
+        <VendorId>#x00000168</VendorId>
+        <ProductCode>#x00000002</ProductCode>
+        <RevisionNo>#x00000001</RevisionNo>
+        <SerialNo>#x00000000</SerialNo>
+        <ProductRevision>STF-EC              </ProductRevision>
+      </Info>
+      <ProcessData>
+        <Send Sm2="true">
+          <BitStart>464</BitStart>
+          <BitLength>232</BitLength>
+        </Send>
+        <Recv Sm3="true">
+          <BitStart>1576</BitStart>
+          <BitLength>280</BitLength>
+        </Recv>
+        <Sm0>
+          <Type>MBoxOut</Type>
+          <StartAddress>4608</StartAddress>
+          <ControlByte>38</ControlByte>
+          <DefaultSize>128</DefaultSize>
+          <Enable>1</Enable>
+        </Sm0>
+        <Sm1>
+          <Type>MBoxIn</Type>
+          <StartAddress>5120</StartAddress>
+          <ControlByte>34</ControlByte>
+          <DefaultSize>128</DefaultSize>
+          <Enable>1</Enable>
+        </Sm1>
+        <Sm2>
+          <Type>Outputs</Type>
+          <StartAddress>6144</StartAddress>
+          <ControlByte>100</ControlByte>
+          <DefaultSize>29</DefaultSize>
+          <Enable>1</Enable>
+          <Watchdog>4000</Watchdog>
+        </Sm2>
+        <Sm3>
+          <Type>Inputs</Type>
+          <StartAddress>7168</StartAddress>
+          <ControlByte>32</ControlByte>
+          <DefaultSize>35</DefaultSize>
+          <Enable>1</Enable>
+          <Watchdog>4000</Watchdog>
+        </Sm3>
+        <RxPdo Sm="2" Fixed="false" Mandatory="false">
+          <Index>#x1600</Index>
+          <Name><![CDATA[RxPDO 1]]></Name>
+          <Entry>
+            <Index>#x6040</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name><![CDATA[ControlWord]]></Name>
+            <DataType>UINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6060</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>8</BitLen>
+            <Name><![CDATA[Modes of operation]]></Name>
+            <DataType>SINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x607A</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Target position]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+        </RxPdo>
+        <RxPdo Sm="2" Fixed="false" Mandatory="false">
+          <Index>#x1601</Index>
+          <Name><![CDATA[RxPDO 2]]></Name>
+          <Entry>
+            <Index>#x6081</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Profile velocity]]></Name>
+            <DataType>UDINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6083</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Profile acceleration]]></Name>
+            <DataType>UDINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6084</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Profile deceleration]]></Name>
+            <DataType>UDINT</DataType>
+          </Entry>
+        </RxPdo>
+        <RxPdo Sm="2" Fixed="false" Mandatory="false">
+          <Index>#x1602</Index>
+          <Name><![CDATA[RxPDO 3]]></Name>
+          <Entry>
+            <Index>#x60FF</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Target Velocity]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+        </RxPdo>
+        <RxPdo Sm="2" Fixed="false" Mandatory="false">
+          <Index>#x1603</Index>
+          <Name><![CDATA[RxPDO 4]]></Name>
+          <Entry>
+            <Index>#x60FE</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Digital outputs]]></Name>
+            <DataType>UDINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x60B8</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name><![CDATA[Touch probe function]]></Name>
+            <DataType>UINT</DataType>
+          </Entry>
+        </RxPdo>
+        <TxPdo Sm="3" Fixed="false" Mandatory="false">
+          <Index>#x1A00</Index>
+          <Name><![CDATA[TxPDO 1]]></Name>
+          <Entry>
+            <Index>#x603F</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name><![CDATA[ErrorCode]]></Name>
+            <DataType>UINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6041</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name><![CDATA[StatusWord]]></Name>
+            <DataType>UINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6061</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>8</BitLen>
+            <Name><![CDATA[Modes of operation display]]></Name>
+            <DataType>SINT</DataType>
+          </Entry>
+        </TxPdo>
+        <TxPdo Sm="3" Fixed="false" Mandatory="false">
+          <Index>#x1A01</Index>
+          <Name><![CDATA[TxPDO 2]]></Name>
+          <Entry>
+            <Index>#x6064</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Position actual value]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+        </TxPdo>
+        <TxPdo Sm="3" Fixed="false" Mandatory="false">
+          <Index>#x1A02</Index>
+          <Name><![CDATA[TxPDO 3]]></Name>
+          <Entry>
+            <Index>#x606C</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Velocity actual value]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+        </TxPdo>
+        <TxPdo Sm="3" Fixed="false" Mandatory="false">
+          <Index>#x1A03</Index>
+          <Name><![CDATA[TxPDO 4]]></Name>
+          <Entry>
+            <Index>#x60FD</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Digital inputs]]></Name>
+            <DataType>UDINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x60B9</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name><![CDATA[Touch probe status]]></Name>
+            <DataType>UINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x60BA</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Touch probe pos1 pos value]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x60BB</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Touch probe pos1 neg value]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x60BC</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Touch probe pos2 pos value]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x60BD</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Touch probe pos2 neg value]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+        </TxPdo>
+      </ProcessData>
+      <Mailbox DataLinkLayer="true">
+        <Send>
+          <Start>4608</Start>
+          <Length>128</Length>
+        </Send>
+        <Recv>
+          <Start>5120</Start>
+          <Length>128</Length>
+          <PollTime>1</PollTime>
+          <StatusBitAddr>2</StatusBitAddr>
+        </Recv>
+        <Protocol>CoE</Protocol>
+      </Mailbox>
+      <InitCmds>
+        <InitCmd>
+          <Transition>PI</Transition>
+          <Transition>BI</Transition>
+          <Transition>SI</Transition>
+          <Transition>OI</Transition>
+          <Comment><![CDATA[set device state to INIT]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>2</Cmd>
+          <Adp>65533</Adp>
+          <Ado>288</Ado>
+          <Data>1100</Data>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[set device state to INIT]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>2</Cmd>
+          <Adp>65533</Adp>
+          <Ado>288</Ado>
+          <Data>1100</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[check device state for INIT]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>1</Cmd>
+          <Adp>65533</Adp>
+          <Ado>304</Ado>
+          <Data>0000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+          <Validate>
+            <Data>0100</Data>
+            <DataMask>1f00</DataMask>
+            <Timeout>1000</Timeout>
+          </Validate>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[check PDI]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>1</Cmd>
+          <Adp>65533</Adp>
+          <Ado>320</Ado>
+          <Data>0000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+          <Validate>
+            <Data>8000</Data>
+            <Timeout>100</Timeout>
+          </Validate>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[set physical address]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>2</Cmd>
+          <Adp>65533</Adp>
+          <Ado>16</Ado>
+          <Data>0310</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[set sm 0 (mailbox out)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4099</Adp>
+          <Ado>2048</Ado>
+          <Data>0012800026000100</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[set sm 1 (mailbox in)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4099</Adp>
+          <Ado>2056</Ado>
+          <Data>0014800022000100</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>SP</Transition>
+          <Transition>OP</Transition>
+          <Comment><![CDATA[set device state to PREOP]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4099</Adp>
+          <Ado>288</Ado>
+          <Data>1200</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>SP</Transition>
+          <Transition>OP</Transition>
+          <Comment><![CDATA[check device state for PREOP]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>4</Cmd>
+          <Adp>4099</Adp>
+          <Ado>304</Ado>
+          <Data>0000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+          <Validate>
+            <Data>0200</Data>
+            <DataMask>1f00</DataMask>
+            <Timeout>1000</Timeout>
+          </Validate>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[set device state to BOOT]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4099</Adp>
+          <Ado>288</Ado>
+          <Data>1300</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[check device state for BOOT]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>4</Cmd>
+          <Adp>4099</Adp>
+          <Ado>304</Ado>
+          <Data>0000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+          <Validate>
+            <Data>0300</Data>
+            <DataMask>1f00</DataMask>
+            <Timeout>1000</Timeout>
+          </Validate>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Comment><![CDATA[set sm 2 (outputs)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4099</Adp>
+          <Ado>2064</Ado>
+          <Data>00181d0064000100</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Comment><![CDATA[set sm 3 (inputs)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4099</Adp>
+          <Ado>2072</Ado>
+          <Data>001c230020000100</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Comment><![CDATA[set fmmu 0 (outputs)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4099</Adp>
+          <Ado>1536</Ado>
+          <Data>3a0001001d0000070018000201000000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Comment><![CDATA[set fmmu 1 (inputs)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4099</Adp>
+          <Ado>1552</Ado>
+          <Data>c500010023000007001c000101000000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Comment><![CDATA[set fmmu 2 (mailbox state)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4099</Adp>
+          <Ado>1568</Ado>
+          <Data>30010100010000070d08000101000000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Transition>OS</Transition>
+          <Comment><![CDATA[set device state to SAFEOP]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4099</Adp>
+          <Ado>288</Ado>
+          <Data>1400</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Transition>OS</Transition>
+          <Comment><![CDATA[check device state for SAFEOP]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>4</Cmd>
+          <Adp>4099</Adp>
+          <Ado>304</Ado>
+          <Data>0000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+          <Validate>
+            <Data>0400</Data>
+            <DataMask>1f00</DataMask>
+            <Timeout>1000</Timeout>
+          </Validate>
+        </InitCmd>
+        <InitCmd>
+          <Transition>SO</Transition>
+          <Comment><![CDATA[set device state to OP]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4099</Adp>
+          <Ado>288</Ado>
+          <Data>1800</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>SO</Transition>
+          <Comment><![CDATA[check device state for OP]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>4</Cmd>
+          <Adp>4099</Adp>
+          <Ado>304</Ado>
+          <Data>0000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+          <Validate>
+            <Data>0800</Data>
+            <DataMask>1f00</DataMask>
+            <Timeout>1000</Timeout>
+          </Validate>
+        </InitCmd>
+      </InitCmds>
+      <PreviousPort Selected="true">
+        <Port>B</Port>
+        <PhysAddr>2</PhysAddr>
+      </PreviousPort>
+      <DC>
+        <CycleTime0>0</CycleTime0>
+        <CycleTime1>0</CycleTime1>
+        <ShiftTime>0</ShiftTime>
+      </DC>
+      <deni:SlaveConfig>
+        <deni:Position>3</deni:Position>
+        <deni:DriveName>STF-EC              </deni:DriveName>
+        <deni:SerialNumber>0x00000000</deni:SerialNumber>
+        <deni:AliasAddress>1</deni:AliasAddress>
+        <deni:MailboxConfig>
+          <deni:WriteOffset>0x1200</deni:WriteOffset>
+          <deni:ReadOffset>0x1400</deni:ReadOffset>
+          <deni:WriteLength>128</deni:WriteLength>
+          <deni:ReadLength>128</deni:ReadLength>
+        </deni:MailboxConfig>
+        <deni:DC>
+          <deni:HasDC>true</deni:HasDC>
+          <deni:Sync0CycleNs>0</deni:Sync0CycleNs>
+          <deni:Sync1CycleNs>0</deni:Sync1CycleNs>
+          <deni:ShiftNs>0</deni:ShiftNs>
+        </deni:DC>
+        <deni:Watchdog>
+          <deni:WdDivider>2498</deni:WdDivider>
+          <deni:WdTimePdi>0</deni:WdTimePdi>
+          <deni:WdTimePd>4000</deni:WdTimePd>
+        </deni:Watchdog>
+        <deni:SyncManagers>
+          <deni:SM index="0">
+            <deni:StartAddr>0x1200</deni:StartAddr>
+            <deni:Length>128</deni:Length>
+            <deni:Flags>0x00010026</deni:Flags>
+            <deni:Type>1</deni:Type>
+          </deni:SM>
+          <deni:SM index="1">
+            <deni:StartAddr>0x1400</deni:StartAddr>
+            <deni:Length>128</deni:Length>
+            <deni:Flags>0x00010022</deni:Flags>
+            <deni:Type>2</deni:Type>
+          </deni:SM>
+          <deni:SM index="2">
+            <deni:StartAddr>0x1800</deni:StartAddr>
+            <deni:Length>29</deni:Length>
+            <deni:Flags>0x00010064</deni:Flags>
+            <deni:Type>3</deni:Type>
+          </deni:SM>
+          <deni:SM index="3">
+            <deni:StartAddr>0x1C00</deni:StartAddr>
+            <deni:Length>35</deni:Length>
+            <deni:Flags>0x00010020</deni:Flags>
+            <deni:Type>4</deni:Type>
+          </deni:SM>
+        </deni:SyncManagers>
+        <deni:PDOConfig>
+          <deni:WriteAssignment>true</deni:WriteAssignment>
+          <deni:WriteConfiguration>true</deni:WriteConfiguration>
+          <deni:CompleteAccess>true</deni:CompleteAccess>
+        </deni:PDOConfig>
+        <deni:DeviceInfo>
+          <deni:HasMDP>false</deni:HasMDP>
+          <deni:BlockLRW>false</deni:BlockLRW>
+          <deni:Dtype>0</deni:Dtype>
+          <deni:Topology>2</deni:Topology>
+          <deni:ActivePorts>3</deni:ActivePorts>
+          <deni:SupportsFrameRepeat>false</deni:SupportsFrameRepeat>
+        </deni:DeviceInfo>
+        <deni:Protocols>
+          <deni:CoE>true</deni:CoE>
+          <deni:FoE>false</deni:FoE>
+          <deni:EoE>false</deni:EoE>
+          <deni:SoE>false</deni:SoE>
+          <deni:AoE>false</deni:AoE>
+          <deni:VoE>false</deni:VoE>
+        </deni:Protocols>
+        <deni:PDOMappings>
+          <deni:RxPdo index="#x1600" name="RxPDO 1">
+            <deni:Entry index="#x6040" subIndex="#x0" bitLength="16" name="ControlWord" dataType="UINT" />
+            <deni:Entry index="#x6060" subIndex="#x0" bitLength="8" name="Modes of operation" dataType="SINT" />
+            <deni:Entry index="#x607a" subIndex="#x0" bitLength="32" name="Target position" dataType="DINT" />
+          </deni:RxPdo>
+          <deni:RxPdo index="#x1601" name="RxPDO 2">
+            <deni:Entry index="#x6081" subIndex="#x0" bitLength="32" name="Profile velocity" dataType="UDINT" />
+            <deni:Entry index="#x6083" subIndex="#x0" bitLength="32" name="Profile acceleration" dataType="UDINT" />
+            <deni:Entry index="#x6084" subIndex="#x0" bitLength="32" name="Profile deceleration" dataType="UDINT" />
+          </deni:RxPdo>
+          <deni:RxPdo index="#x1602" name="RxPDO 3">
+            <deni:Entry index="#x60ff" subIndex="#x0" bitLength="32" name="Target Velocity" dataType="DINT" />
+          </deni:RxPdo>
+          <deni:RxPdo index="#x1603" name="RxPDO 4">
+            <deni:Entry index="#x60FE" subIndex="#x1" bitLength="32" name="Digital outputs" dataType="UDINT" />
+            <deni:Entry index="#x60B8" subIndex="#x0" bitLength="16" name="Touch probe function" dataType="UINT" />
+          </deni:RxPdo>
+          <deni:TxPdo index="#x1A00" name="TxPDO 1">
+            <deni:Entry index="#x603F" subIndex="#x0" bitLength="16" name="ErrorCode" dataType="UINT" />
+            <deni:Entry index="#x6041" subIndex="#x0" bitLength="16" name="StatusWord" dataType="UINT" />
+            <deni:Entry index="#x6061" subIndex="#x0" bitLength="8" name="Modes of operation display" dataType="SINT" />
+          </deni:TxPdo>
+          <deni:TxPdo index="#x1A01" name="TxPDO 2">
+            <deni:Entry index="#x6064" subIndex="#x0" bitLength="32" name="Position actual value" dataType="DINT" />
+          </deni:TxPdo>
+          <deni:TxPdo index="#x1A02" name="TxPDO 3">
+            <deni:Entry index="#x606c" subIndex="#x0" bitLength="32" name="Velocity actual value" dataType="DINT" />
+          </deni:TxPdo>
+          <deni:TxPdo index="#x1A03" name="TxPDO 4">
+            <deni:Entry index="#x60FD" subIndex="#x0" bitLength="32" name="Digital inputs" dataType="UDINT" />
+            <deni:Entry index="#x60B9" subIndex="#x0" bitLength="16" name="Touch probe status" dataType="UINT" />
+            <deni:Entry index="#x60BA" subIndex="#x0" bitLength="32" name="Touch probe pos1 pos value" dataType="DINT" />
+            <deni:Entry index="#x60BB" subIndex="#x0" bitLength="32" name="Touch probe pos1 neg value" dataType="DINT" />
+            <deni:Entry index="#x60BC" subIndex="#x0" bitLength="32" name="Touch probe pos2 pos value" dataType="DINT" />
+            <deni:Entry index="#x60BD" subIndex="#x0" bitLength="32" name="Touch probe pos2 neg value" dataType="DINT" />
+          </deni:TxPdo>
+        </deni:PDOMappings>
+      </deni:SlaveConfig>
+    </Slave>
+    <Slave>
+      <Info>
+        <Name><![CDATA[STF-EC]]></Name>
+        <PhysAddr>4100</PhysAddr>
+        <AutoIncAddr>65532</AutoIncAddr>
+        <Physics>YY</Physics>
+        <VendorId>#x00000168</VendorId>
+        <ProductCode>#x00000002</ProductCode>
+        <RevisionNo>#x00000001</RevisionNo>
+        <SerialNo>#x00000000</SerialNo>
+        <ProductRevision>STF-EC              </ProductRevision>
+      </Info>
+      <ProcessData>
+        <Send Sm2="true">
+          <BitStart>696</BitStart>
+          <BitLength>232</BitLength>
+        </Send>
+        <Recv Sm3="true">
+          <BitStart>1856</BitStart>
+          <BitLength>280</BitLength>
+        </Recv>
+        <Sm0>
+          <Type>MBoxOut</Type>
+          <StartAddress>4608</StartAddress>
+          <ControlByte>38</ControlByte>
+          <DefaultSize>128</DefaultSize>
+          <Enable>1</Enable>
+        </Sm0>
+        <Sm1>
+          <Type>MBoxIn</Type>
+          <StartAddress>5120</StartAddress>
+          <ControlByte>34</ControlByte>
+          <DefaultSize>128</DefaultSize>
+          <Enable>1</Enable>
+        </Sm1>
+        <Sm2>
+          <Type>Outputs</Type>
+          <StartAddress>6144</StartAddress>
+          <ControlByte>100</ControlByte>
+          <DefaultSize>29</DefaultSize>
+          <Enable>1</Enable>
+          <Watchdog>4000</Watchdog>
+        </Sm2>
+        <Sm3>
+          <Type>Inputs</Type>
+          <StartAddress>7168</StartAddress>
+          <ControlByte>32</ControlByte>
+          <DefaultSize>35</DefaultSize>
+          <Enable>1</Enable>
+          <Watchdog>4000</Watchdog>
+        </Sm3>
+        <RxPdo Sm="2" Fixed="false" Mandatory="false">
+          <Index>#x1600</Index>
+          <Name><![CDATA[RxPDO 1]]></Name>
+          <Entry>
+            <Index>#x6040</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name><![CDATA[ControlWord]]></Name>
+            <DataType>UINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6060</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>8</BitLen>
+            <Name><![CDATA[Modes of operation]]></Name>
+            <DataType>SINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x607A</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Target position]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+        </RxPdo>
+        <RxPdo Sm="2" Fixed="false" Mandatory="false">
+          <Index>#x1601</Index>
+          <Name><![CDATA[RxPDO 2]]></Name>
+          <Entry>
+            <Index>#x6081</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Profile velocity]]></Name>
+            <DataType>UDINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6083</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Profile acceleration]]></Name>
+            <DataType>UDINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6084</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Profile deceleration]]></Name>
+            <DataType>UDINT</DataType>
+          </Entry>
+        </RxPdo>
+        <RxPdo Sm="2" Fixed="false" Mandatory="false">
+          <Index>#x1602</Index>
+          <Name><![CDATA[RxPDO 3]]></Name>
+          <Entry>
+            <Index>#x60FF</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Target Velocity]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+        </RxPdo>
+        <RxPdo Sm="2" Fixed="false" Mandatory="false">
+          <Index>#x1603</Index>
+          <Name><![CDATA[RxPDO 4]]></Name>
+          <Entry>
+            <Index>#x60FE</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Digital outputs]]></Name>
+            <DataType>UDINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x60B8</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name><![CDATA[Touch probe function]]></Name>
+            <DataType>UINT</DataType>
+          </Entry>
+        </RxPdo>
+        <TxPdo Sm="3" Fixed="false" Mandatory="false">
+          <Index>#x1A00</Index>
+          <Name><![CDATA[TxPDO 1]]></Name>
+          <Entry>
+            <Index>#x603F</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name><![CDATA[ErrorCode]]></Name>
+            <DataType>UINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6041</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name><![CDATA[StatusWord]]></Name>
+            <DataType>UINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6061</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>8</BitLen>
+            <Name><![CDATA[Modes of operation display]]></Name>
+            <DataType>SINT</DataType>
+          </Entry>
+        </TxPdo>
+        <TxPdo Sm="3" Fixed="false" Mandatory="false">
+          <Index>#x1A01</Index>
+          <Name><![CDATA[TxPDO 2]]></Name>
+          <Entry>
+            <Index>#x6064</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Position actual value]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+        </TxPdo>
+        <TxPdo Sm="3" Fixed="false" Mandatory="false">
+          <Index>#x1A02</Index>
+          <Name><![CDATA[TxPDO 3]]></Name>
+          <Entry>
+            <Index>#x606C</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Velocity actual value]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+        </TxPdo>
+        <TxPdo Sm="3" Fixed="false" Mandatory="false">
+          <Index>#x1A03</Index>
+          <Name><![CDATA[TxPDO 4]]></Name>
+          <Entry>
+            <Index>#x60FD</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Digital inputs]]></Name>
+            <DataType>UDINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x60B9</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name><![CDATA[Touch probe status]]></Name>
+            <DataType>UINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x60BA</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Touch probe pos1 pos value]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x60BB</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Touch probe pos1 neg value]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x60BC</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Touch probe pos2 pos value]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x60BD</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Touch probe pos2 neg value]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+        </TxPdo>
+      </ProcessData>
+      <Mailbox DataLinkLayer="true">
+        <Send>
+          <Start>4608</Start>
+          <Length>128</Length>
+        </Send>
+        <Recv>
+          <Start>5120</Start>
+          <Length>128</Length>
+          <PollTime>1</PollTime>
+          <StatusBitAddr>3</StatusBitAddr>
+        </Recv>
+        <Protocol>CoE</Protocol>
+      </Mailbox>
+      <InitCmds>
+        <InitCmd>
+          <Transition>PI</Transition>
+          <Transition>BI</Transition>
+          <Transition>SI</Transition>
+          <Transition>OI</Transition>
+          <Comment><![CDATA[set device state to INIT]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>2</Cmd>
+          <Adp>65532</Adp>
+          <Ado>288</Ado>
+          <Data>1100</Data>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[set device state to INIT]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>2</Cmd>
+          <Adp>65532</Adp>
+          <Ado>288</Ado>
+          <Data>1100</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[check device state for INIT]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>1</Cmd>
+          <Adp>65532</Adp>
+          <Ado>304</Ado>
+          <Data>0000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+          <Validate>
+            <Data>0100</Data>
+            <DataMask>1f00</DataMask>
+            <Timeout>1000</Timeout>
+          </Validate>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[check PDI]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>1</Cmd>
+          <Adp>65532</Adp>
+          <Ado>320</Ado>
+          <Data>0000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+          <Validate>
+            <Data>8000</Data>
+            <Timeout>100</Timeout>
+          </Validate>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[set physical address]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>2</Cmd>
+          <Adp>65532</Adp>
+          <Ado>16</Ado>
+          <Data>0410</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[set sm 0 (mailbox out)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4100</Adp>
+          <Ado>2048</Ado>
+          <Data>0012800026000100</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[set sm 1 (mailbox in)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4100</Adp>
+          <Ado>2056</Ado>
+          <Data>0014800022000100</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>SP</Transition>
+          <Transition>OP</Transition>
+          <Comment><![CDATA[set device state to PREOP]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4100</Adp>
+          <Ado>288</Ado>
+          <Data>1200</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>SP</Transition>
+          <Transition>OP</Transition>
+          <Comment><![CDATA[check device state for PREOP]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>4</Cmd>
+          <Adp>4100</Adp>
+          <Ado>304</Ado>
+          <Data>0000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+          <Validate>
+            <Data>0200</Data>
+            <DataMask>1f00</DataMask>
+            <Timeout>1000</Timeout>
+          </Validate>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[set device state to BOOT]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4100</Adp>
+          <Ado>288</Ado>
+          <Data>1300</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[check device state for BOOT]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>4</Cmd>
+          <Adp>4100</Adp>
+          <Ado>304</Ado>
+          <Data>0000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+          <Validate>
+            <Data>0300</Data>
+            <DataMask>1f00</DataMask>
+            <Timeout>1000</Timeout>
+          </Validate>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Comment><![CDATA[set sm 2 (outputs)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4100</Adp>
+          <Ado>2064</Ado>
+          <Data>00181d0064000100</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Comment><![CDATA[set sm 3 (inputs)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4100</Adp>
+          <Ado>2072</Ado>
+          <Data>001c230020000100</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Comment><![CDATA[set fmmu 0 (outputs)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4100</Adp>
+          <Ado>1536</Ado>
+          <Data>570001001d0000070018000201000000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Comment><![CDATA[set fmmu 1 (inputs)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4100</Adp>
+          <Ado>1552</Ado>
+          <Data>e800010023000007001c000101000000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Comment><![CDATA[set fmmu 2 (mailbox state)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4100</Adp>
+          <Ado>1568</Ado>
+          <Data>31010100010000070d08000101000000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Transition>OS</Transition>
+          <Comment><![CDATA[set device state to SAFEOP]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4100</Adp>
+          <Ado>288</Ado>
+          <Data>1400</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Transition>OS</Transition>
+          <Comment><![CDATA[check device state for SAFEOP]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>4</Cmd>
+          <Adp>4100</Adp>
+          <Ado>304</Ado>
+          <Data>0000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+          <Validate>
+            <Data>0400</Data>
+            <DataMask>1f00</DataMask>
+            <Timeout>1000</Timeout>
+          </Validate>
+        </InitCmd>
+        <InitCmd>
+          <Transition>SO</Transition>
+          <Comment><![CDATA[set device state to OP]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4100</Adp>
+          <Ado>288</Ado>
+          <Data>1800</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>SO</Transition>
+          <Comment><![CDATA[check device state for OP]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>4</Cmd>
+          <Adp>4100</Adp>
+          <Ado>304</Ado>
+          <Data>0000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+          <Validate>
+            <Data>0800</Data>
+            <DataMask>1f00</DataMask>
+            <Timeout>1000</Timeout>
+          </Validate>
+        </InitCmd>
+      </InitCmds>
+      <PreviousPort Selected="true">
+        <Port>B</Port>
+        <PhysAddr>3</PhysAddr>
+      </PreviousPort>
+      <DC>
+        <CycleTime0>0</CycleTime0>
+        <CycleTime1>0</CycleTime1>
+        <ShiftTime>0</ShiftTime>
+      </DC>
+      <deni:SlaveConfig>
+        <deni:Position>4</deni:Position>
+        <deni:DriveName>STF-EC              </deni:DriveName>
+        <deni:SerialNumber>0x00000000</deni:SerialNumber>
+        <deni:AliasAddress>0</deni:AliasAddress>
+        <deni:MailboxConfig>
+          <deni:WriteOffset>0x1200</deni:WriteOffset>
+          <deni:ReadOffset>0x1400</deni:ReadOffset>
+          <deni:WriteLength>128</deni:WriteLength>
+          <deni:ReadLength>128</deni:ReadLength>
+        </deni:MailboxConfig>
+        <deni:DC>
+          <deni:HasDC>true</deni:HasDC>
+          <deni:Sync0CycleNs>0</deni:Sync0CycleNs>
+          <deni:Sync1CycleNs>0</deni:Sync1CycleNs>
+          <deni:ShiftNs>0</deni:ShiftNs>
+        </deni:DC>
+        <deni:Watchdog>
+          <deni:WdDivider>2498</deni:WdDivider>
+          <deni:WdTimePdi>0</deni:WdTimePdi>
+          <deni:WdTimePd>4000</deni:WdTimePd>
+        </deni:Watchdog>
+        <deni:SyncManagers>
+          <deni:SM index="0">
+            <deni:StartAddr>0x1200</deni:StartAddr>
+            <deni:Length>128</deni:Length>
+            <deni:Flags>0x00010026</deni:Flags>
+            <deni:Type>1</deni:Type>
+          </deni:SM>
+          <deni:SM index="1">
+            <deni:StartAddr>0x1400</deni:StartAddr>
+            <deni:Length>128</deni:Length>
+            <deni:Flags>0x00010022</deni:Flags>
+            <deni:Type>2</deni:Type>
+          </deni:SM>
+          <deni:SM index="2">
+            <deni:StartAddr>0x1800</deni:StartAddr>
+            <deni:Length>29</deni:Length>
+            <deni:Flags>0x00010064</deni:Flags>
+            <deni:Type>3</deni:Type>
+          </deni:SM>
+          <deni:SM index="3">
+            <deni:StartAddr>0x1C00</deni:StartAddr>
+            <deni:Length>35</deni:Length>
+            <deni:Flags>0x00010020</deni:Flags>
+            <deni:Type>4</deni:Type>
+          </deni:SM>
+        </deni:SyncManagers>
+        <deni:PDOConfig>
+          <deni:WriteAssignment>true</deni:WriteAssignment>
+          <deni:WriteConfiguration>true</deni:WriteConfiguration>
+          <deni:CompleteAccess>true</deni:CompleteAccess>
+        </deni:PDOConfig>
+        <deni:DeviceInfo>
+          <deni:HasMDP>false</deni:HasMDP>
+          <deni:BlockLRW>false</deni:BlockLRW>
+          <deni:Dtype>0</deni:Dtype>
+          <deni:Topology>2</deni:Topology>
+          <deni:ActivePorts>3</deni:ActivePorts>
+          <deni:SupportsFrameRepeat>false</deni:SupportsFrameRepeat>
+        </deni:DeviceInfo>
+        <deni:Protocols>
+          <deni:CoE>true</deni:CoE>
+          <deni:FoE>false</deni:FoE>
+          <deni:EoE>false</deni:EoE>
+          <deni:SoE>false</deni:SoE>
+          <deni:AoE>false</deni:AoE>
+          <deni:VoE>false</deni:VoE>
+        </deni:Protocols>
+        <deni:PDOMappings>
+          <deni:RxPdo index="#x1600" name="RxPDO 1">
+            <deni:Entry index="#x6040" subIndex="#x0" bitLength="16" name="ControlWord" dataType="UINT" />
+            <deni:Entry index="#x6060" subIndex="#x0" bitLength="8" name="Modes of operation" dataType="SINT" />
+            <deni:Entry index="#x607a" subIndex="#x0" bitLength="32" name="Target position" dataType="DINT" />
+          </deni:RxPdo>
+          <deni:RxPdo index="#x1601" name="RxPDO 2">
+            <deni:Entry index="#x6081" subIndex="#x0" bitLength="32" name="Profile velocity" dataType="UDINT" />
+            <deni:Entry index="#x6083" subIndex="#x0" bitLength="32" name="Profile acceleration" dataType="UDINT" />
+            <deni:Entry index="#x6084" subIndex="#x0" bitLength="32" name="Profile deceleration" dataType="UDINT" />
+          </deni:RxPdo>
+          <deni:RxPdo index="#x1602" name="RxPDO 3">
+            <deni:Entry index="#x60ff" subIndex="#x0" bitLength="32" name="Target Velocity" dataType="DINT" />
+          </deni:RxPdo>
+          <deni:RxPdo index="#x1603" name="RxPDO 4">
+            <deni:Entry index="#x60FE" subIndex="#x1" bitLength="32" name="Digital outputs" dataType="UDINT" />
+            <deni:Entry index="#x60B8" subIndex="#x0" bitLength="16" name="Touch probe function" dataType="UINT" />
+          </deni:RxPdo>
+          <deni:TxPdo index="#x1A00" name="TxPDO 1">
+            <deni:Entry index="#x603F" subIndex="#x0" bitLength="16" name="ErrorCode" dataType="UINT" />
+            <deni:Entry index="#x6041" subIndex="#x0" bitLength="16" name="StatusWord" dataType="UINT" />
+            <deni:Entry index="#x6061" subIndex="#x0" bitLength="8" name="Modes of operation display" dataType="SINT" />
+          </deni:TxPdo>
+          <deni:TxPdo index="#x1A01" name="TxPDO 2">
+            <deni:Entry index="#x6064" subIndex="#x0" bitLength="32" name="Position actual value" dataType="DINT" />
+          </deni:TxPdo>
+          <deni:TxPdo index="#x1A02" name="TxPDO 3">
+            <deni:Entry index="#x606c" subIndex="#x0" bitLength="32" name="Velocity actual value" dataType="DINT" />
+          </deni:TxPdo>
+          <deni:TxPdo index="#x1A03" name="TxPDO 4">
+            <deni:Entry index="#x60FD" subIndex="#x0" bitLength="32" name="Digital inputs" dataType="UDINT" />
+            <deni:Entry index="#x60B9" subIndex="#x0" bitLength="16" name="Touch probe status" dataType="UINT" />
+            <deni:Entry index="#x60BA" subIndex="#x0" bitLength="32" name="Touch probe pos1 pos value" dataType="DINT" />
+            <deni:Entry index="#x60BB" subIndex="#x0" bitLength="32" name="Touch probe pos1 neg value" dataType="DINT" />
+            <deni:Entry index="#x60BC" subIndex="#x0" bitLength="32" name="Touch probe pos2 pos value" dataType="DINT" />
+            <deni:Entry index="#x60BD" subIndex="#x0" bitLength="32" name="Touch probe pos2 neg value" dataType="DINT" />
+          </deni:TxPdo>
+        </deni:PDOMappings>
+      </deni:SlaveConfig>
+    </Slave>
+    <Slave>
+      <Info>
+        <Name><![CDATA[STF-EC]]></Name>
+        <PhysAddr>4101</PhysAddr>
+        <AutoIncAddr>65531</AutoIncAddr>
+        <Physics>YY</Physics>
+        <VendorId>#x00000168</VendorId>
+        <ProductCode>#x00000002</ProductCode>
+        <RevisionNo>#x00000001</RevisionNo>
+        <SerialNo>#x00000000</SerialNo>
+        <ProductRevision>STF-EC              </ProductRevision>
+      </Info>
+      <ProcessData>
+        <Send Sm2="true">
+          <BitStart>928</BitStart>
+          <BitLength>88</BitLength>
+        </Send>
+        <Recv Sm3="true">
+          <BitStart>2136</BitStart>
+          <BitLength>280</BitLength>
+        </Recv>
+        <Sm0>
+          <Type>MBoxOut</Type>
+          <StartAddress>4608</StartAddress>
+          <ControlByte>38</ControlByte>
+          <DefaultSize>128</DefaultSize>
+          <Enable>1</Enable>
+        </Sm0>
+        <Sm1>
+          <Type>MBoxIn</Type>
+          <StartAddress>5120</StartAddress>
+          <ControlByte>34</ControlByte>
+          <DefaultSize>128</DefaultSize>
+          <Enable>1</Enable>
+        </Sm1>
+        <Sm2>
+          <Type>Outputs</Type>
+          <StartAddress>6144</StartAddress>
+          <ControlByte>100</ControlByte>
+          <DefaultSize>11</DefaultSize>
+          <Enable>1</Enable>
+          <Watchdog>4000</Watchdog>
+        </Sm2>
+        <Sm3>
+          <Type>Inputs</Type>
+          <StartAddress>7168</StartAddress>
+          <ControlByte>32</ControlByte>
+          <DefaultSize>35</DefaultSize>
+          <Enable>1</Enable>
+          <Watchdog>4000</Watchdog>
+        </Sm3>
+        <RxPdo Sm="2" Fixed="false" Mandatory="false">
+          <Index>#x1600</Index>
+          <Name><![CDATA[RxPDO 1]]></Name>
+          <Entry>
+            <Index>#x6040</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name><![CDATA[ControlWord]]></Name>
+            <DataType>UINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6060</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>8</BitLen>
+            <Name><![CDATA[Modes of operation]]></Name>
+            <DataType>SINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x607A</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Target position]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+        </RxPdo>
+        <RxPdo Sm="2" Fixed="false" Mandatory="false">
+          <Index>#x1601</Index>
+          <Name><![CDATA[RxPDO 2]]></Name>
+          <Entry>
+            <Index>#x6081</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Profile velocity]]></Name>
+            <DataType>UDINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6083</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Profile acceleration]]></Name>
+            <DataType>UDINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6084</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Profile deceleration]]></Name>
+            <DataType>UDINT</DataType>
+          </Entry>
+        </RxPdo>
+        <RxPdo Sm="2" Fixed="false" Mandatory="false">
+          <Index>#x1602</Index>
+          <Name><![CDATA[RxPDO 3]]></Name>
+          <Entry>
+            <Index>#x60FF</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Target Velocity]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+        </RxPdo>
+        <RxPdo Sm="2" Fixed="false" Mandatory="false">
+          <Index>#x1603</Index>
+          <Name><![CDATA[RxPDO 4]]></Name>
+          <Entry>
+            <Index>#x60FE</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Digital outputs]]></Name>
+            <DataType>UDINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x60B8</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name><![CDATA[Touch probe function]]></Name>
+            <DataType>UINT</DataType>
+          </Entry>
+        </RxPdo>
+        <TxPdo Sm="3" Fixed="false" Mandatory="false">
+          <Index>#x1A00</Index>
+          <Name><![CDATA[TxPDO 1]]></Name>
+          <Entry>
+            <Index>#x603F</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name><![CDATA[ErrorCode]]></Name>
+            <DataType>UINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6041</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name><![CDATA[StatusWord]]></Name>
+            <DataType>UINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6061</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>8</BitLen>
+            <Name><![CDATA[Modes of operation display]]></Name>
+            <DataType>SINT</DataType>
+          </Entry>
+        </TxPdo>
+        <TxPdo Sm="3" Fixed="false" Mandatory="false">
+          <Index>#x1A01</Index>
+          <Name><![CDATA[TxPDO 2]]></Name>
+          <Entry>
+            <Index>#x6064</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Position actual value]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+        </TxPdo>
+        <TxPdo Sm="3" Fixed="false" Mandatory="false">
+          <Index>#x1A02</Index>
+          <Name><![CDATA[TxPDO 3]]></Name>
+          <Entry>
+            <Index>#x606C</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Velocity actual value]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+        </TxPdo>
+        <TxPdo Sm="3" Fixed="false" Mandatory="false">
+          <Index>#x1A03</Index>
+          <Name><![CDATA[TxPDO 4]]></Name>
+          <Entry>
+            <Index>#x60FD</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Digital inputs]]></Name>
+            <DataType>UDINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x60B9</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name><![CDATA[Touch probe status]]></Name>
+            <DataType>UINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x60BA</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Touch probe pos1 pos value]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x60BB</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Touch probe pos1 neg value]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x60BC</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Touch probe pos2 pos value]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x60BD</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name><![CDATA[Touch probe pos2 neg value]]></Name>
+            <DataType>DINT</DataType>
+          </Entry>
+        </TxPdo>
+      </ProcessData>
+      <Mailbox DataLinkLayer="true">
+        <Send>
+          <Start>4608</Start>
+          <Length>128</Length>
+        </Send>
+        <Recv>
+          <Start>5120</Start>
+          <Length>128</Length>
+          <PollTime>1</PollTime>
+          <StatusBitAddr>4</StatusBitAddr>
+        </Recv>
+        <Protocol>CoE</Protocol>
+      </Mailbox>
+      <InitCmds>
+        <InitCmd>
+          <Transition>PI</Transition>
+          <Transition>BI</Transition>
+          <Transition>SI</Transition>
+          <Transition>OI</Transition>
+          <Comment><![CDATA[set device state to INIT]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>2</Cmd>
+          <Adp>65531</Adp>
+          <Ado>288</Ado>
+          <Data>1100</Data>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[set device state to INIT]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>2</Cmd>
+          <Adp>65531</Adp>
+          <Ado>288</Ado>
+          <Data>1100</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[check device state for INIT]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>1</Cmd>
+          <Adp>65531</Adp>
+          <Ado>304</Ado>
+          <Data>0000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+          <Validate>
+            <Data>0100</Data>
+            <DataMask>1f00</DataMask>
+            <Timeout>1000</Timeout>
+          </Validate>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[check PDI]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>1</Cmd>
+          <Adp>65531</Adp>
+          <Ado>320</Ado>
+          <Data>0000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+          <Validate>
+            <Data>8000</Data>
+            <Timeout>100</Timeout>
+          </Validate>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[set physical address]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>2</Cmd>
+          <Adp>65531</Adp>
+          <Ado>16</Ado>
+          <Data>0510</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[set sm 0 (mailbox out)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4101</Adp>
+          <Ado>2048</Ado>
+          <Data>0012800026000100</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[set sm 1 (mailbox in)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4101</Adp>
+          <Ado>2056</Ado>
+          <Data>0014800022000100</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>SP</Transition>
+          <Transition>OP</Transition>
+          <Comment><![CDATA[set device state to PREOP]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4101</Adp>
+          <Ado>288</Ado>
+          <Data>1200</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IP</Transition>
+          <Transition>SP</Transition>
+          <Transition>OP</Transition>
+          <Comment><![CDATA[check device state for PREOP]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>4</Cmd>
+          <Adp>4101</Adp>
+          <Ado>304</Ado>
+          <Data>0000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+          <Validate>
+            <Data>0200</Data>
+            <DataMask>1f00</DataMask>
+            <Timeout>1000</Timeout>
+          </Validate>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[set device state to BOOT]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4101</Adp>
+          <Ado>288</Ado>
+          <Data>1300</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>IB</Transition>
+          <Comment><![CDATA[check device state for BOOT]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>4</Cmd>
+          <Adp>4101</Adp>
+          <Ado>304</Ado>
+          <Data>0000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+          <Validate>
+            <Data>0300</Data>
+            <DataMask>1f00</DataMask>
+            <Timeout>1000</Timeout>
+          </Validate>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Comment><![CDATA[set sm 2 (outputs)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4101</Adp>
+          <Ado>2064</Ado>
+          <Data>00180b0064000100</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Comment><![CDATA[set sm 3 (inputs)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4101</Adp>
+          <Ado>2072</Ado>
+          <Data>001c230020000100</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Comment><![CDATA[set fmmu 0 (outputs)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4101</Adp>
+          <Ado>1536</Ado>
+          <Data>740001000b0000070018000201000000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Comment><![CDATA[set fmmu 1 (inputs)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4101</Adp>
+          <Ado>1552</Ado>
+          <Data>0b01010023000007001c000101000000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Comment><![CDATA[set fmmu 2 (mailbox state)]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4101</Adp>
+          <Ado>1568</Ado>
+          <Data>32010100010000070d08000101000000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Transition>OS</Transition>
+          <Comment><![CDATA[set device state to SAFEOP]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4101</Adp>
+          <Ado>288</Ado>
+          <Data>1400</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>PS</Transition>
+          <Transition>OS</Transition>
+          <Comment><![CDATA[check device state for SAFEOP]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>4</Cmd>
+          <Adp>4101</Adp>
+          <Ado>304</Ado>
+          <Data>0000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+          <Validate>
+            <Data>0400</Data>
+            <DataMask>1f00</DataMask>
+            <Timeout>1000</Timeout>
+          </Validate>
+        </InitCmd>
+        <InitCmd>
+          <Transition>SO</Transition>
+          <Comment><![CDATA[set device state to OP]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>5</Cmd>
+          <Adp>4101</Adp>
+          <Ado>288</Ado>
+          <Data>1800</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+        </InitCmd>
+        <InitCmd>
+          <Transition>SO</Transition>
+          <Comment><![CDATA[check device state for OP]]></Comment>
+          <Requires>cycle</Requires>
+          <Cmd>4</Cmd>
+          <Adp>4101</Adp>
+          <Ado>304</Ado>
+          <Data>0000</Data>
+          <Cnt>1</Cnt>
+          <Retries>3</Retries>
+          <Validate>
+            <Data>0800</Data>
+            <DataMask>1f00</DataMask>
+            <Timeout>1000</Timeout>
+          </Validate>
+        </InitCmd>
+      </InitCmds>
+      <PreviousPort Selected="true">
+        <Port>B</Port>
+        <PhysAddr>4</PhysAddr>
+      </PreviousPort>
+      <DC>
+        <CycleTime0>0</CycleTime0>
+        <CycleTime1>0</CycleTime1>
+        <ShiftTime>0</ShiftTime>
+      </DC>
+      <deni:SlaveConfig>
+        <deni:Position>5</deni:Position>
+        <deni:DriveName>STF-EC              </deni:DriveName>
+        <deni:SerialNumber>0x00000000</deni:SerialNumber>
+        <deni:AliasAddress>0</deni:AliasAddress>
+        <deni:MailboxConfig>
+          <deni:WriteOffset>0x1200</deni:WriteOffset>
+          <deni:ReadOffset>0x1400</deni:ReadOffset>
+          <deni:WriteLength>128</deni:WriteLength>
+          <deni:ReadLength>128</deni:ReadLength>
+        </deni:MailboxConfig>
+        <deni:DC>
+          <deni:HasDC>true</deni:HasDC>
+          <deni:Sync0CycleNs>0</deni:Sync0CycleNs>
+          <deni:Sync1CycleNs>0</deni:Sync1CycleNs>
+          <deni:ShiftNs>0</deni:ShiftNs>
+        </deni:DC>
+        <deni:Watchdog>
+          <deni:WdDivider>2498</deni:WdDivider>
+          <deni:WdTimePdi>0</deni:WdTimePdi>
+          <deni:WdTimePd>4000</deni:WdTimePd>
+        </deni:Watchdog>
+        <deni:SyncManagers>
+          <deni:SM index="0">
+            <deni:StartAddr>0x1200</deni:StartAddr>
+            <deni:Length>128</deni:Length>
+            <deni:Flags>0x00010026</deni:Flags>
+            <deni:Type>1</deni:Type>
+          </deni:SM>
+          <deni:SM index="1">
+            <deni:StartAddr>0x1400</deni:StartAddr>
+            <deni:Length>128</deni:Length>
+            <deni:Flags>0x00010022</deni:Flags>
+            <deni:Type>2</deni:Type>
+          </deni:SM>
+          <deni:SM index="2">
+            <deni:StartAddr>0x1800</deni:StartAddr>
+            <deni:Length>11</deni:Length>
+            <deni:Flags>0x00010064</deni:Flags>
+            <deni:Type>3</deni:Type>
+          </deni:SM>
+          <deni:SM index="3">
+            <deni:StartAddr>0x1C00</deni:StartAddr>
+            <deni:Length>35</deni:Length>
+            <deni:Flags>0x00010020</deni:Flags>
+            <deni:Type>4</deni:Type>
+          </deni:SM>
+        </deni:SyncManagers>
+        <deni:PDOConfig>
+          <deni:WriteAssignment>true</deni:WriteAssignment>
+          <deni:WriteConfiguration>true</deni:WriteConfiguration>
+          <deni:CompleteAccess>true</deni:CompleteAccess>
+        </deni:PDOConfig>
+        <deni:DeviceInfo>
+          <deni:HasMDP>false</deni:HasMDP>
+          <deni:BlockLRW>false</deni:BlockLRW>
+          <deni:Dtype>0</deni:Dtype>
+          <deni:Topology>1</deni:Topology>
+          <deni:ActivePorts>1</deni:ActivePorts>
+          <deni:SupportsFrameRepeat>false</deni:SupportsFrameRepeat>
+        </deni:DeviceInfo>
+        <deni:Protocols>
+          <deni:CoE>true</deni:CoE>
+          <deni:FoE>false</deni:FoE>
+          <deni:EoE>false</deni:EoE>
+          <deni:SoE>false</deni:SoE>
+          <deni:AoE>false</deni:AoE>
+          <deni:VoE>false</deni:VoE>
+        </deni:Protocols>
+        <deni:PDOMappings>
+          <deni:RxPdo index="#x1600" name="RxPDO 1">
+            <deni:Entry index="#x6040" subIndex="#x0" bitLength="16" name="ControlWord" dataType="UINT" />
+            <deni:Entry index="#x6060" subIndex="#x0" bitLength="8" name="Modes of operation" dataType="SINT" />
+            <deni:Entry index="#x607a" subIndex="#x0" bitLength="32" name="Target position" dataType="DINT" />
+          </deni:RxPdo>
+          <deni:RxPdo index="#x1601" name="RxPDO 2">
+            <deni:Entry index="#x6081" subIndex="#x0" bitLength="32" name="Profile velocity" dataType="UDINT" />
+            <deni:Entry index="#x6083" subIndex="#x0" bitLength="32" name="Profile acceleration" dataType="UDINT" />
+            <deni:Entry index="#x6084" subIndex="#x0" bitLength="32" name="Profile deceleration" dataType="UDINT" />
+          </deni:RxPdo>
+          <deni:RxPdo index="#x1602" name="RxPDO 3">
+            <deni:Entry index="#x60ff" subIndex="#x0" bitLength="32" name="Target Velocity" dataType="DINT" />
+          </deni:RxPdo>
+          <deni:RxPdo index="#x1603" name="RxPDO 4">
+            <deni:Entry index="#x60FE" subIndex="#x1" bitLength="32" name="Digital outputs" dataType="UDINT" />
+            <deni:Entry index="#x60B8" subIndex="#x0" bitLength="16" name="Touch probe function" dataType="UINT" />
+          </deni:RxPdo>
+          <deni:TxPdo index="#x1A00" name="TxPDO 1">
+            <deni:Entry index="#x603F" subIndex="#x0" bitLength="16" name="ErrorCode" dataType="UINT" />
+            <deni:Entry index="#x6041" subIndex="#x0" bitLength="16" name="StatusWord" dataType="UINT" />
+            <deni:Entry index="#x6061" subIndex="#x0" bitLength="8" name="Modes of operation display" dataType="SINT" />
+          </deni:TxPdo>
+          <deni:TxPdo index="#x1A01" name="TxPDO 2">
+            <deni:Entry index="#x6064" subIndex="#x0" bitLength="32" name="Position actual value" dataType="DINT" />
+          </deni:TxPdo>
+          <deni:TxPdo index="#x1A02" name="TxPDO 3">
+            <deni:Entry index="#x606c" subIndex="#x0" bitLength="32" name="Velocity actual value" dataType="DINT" />
+          </deni:TxPdo>
+          <deni:TxPdo index="#x1A03" name="TxPDO 4">
+            <deni:Entry index="#x60FD" subIndex="#x0" bitLength="32" name="Digital inputs" dataType="UDINT" />
+            <deni:Entry index="#x60B9" subIndex="#x0" bitLength="16" name="Touch probe status" dataType="UINT" />
+            <deni:Entry index="#x60BA" subIndex="#x0" bitLength="32" name="Touch probe pos1 pos value" dataType="DINT" />
+            <deni:Entry index="#x60BB" subIndex="#x0" bitLength="32" name="Touch probe pos1 neg value" dataType="DINT" />
+            <deni:Entry index="#x60BC" subIndex="#x0" bitLength="32" name="Touch probe pos2 pos value" dataType="DINT" />
+            <deni:Entry index="#x60BD" subIndex="#x0" bitLength="32" name="Touch probe pos2 neg value" dataType="DINT" />
+          </deni:TxPdo>
+        </deni:PDOMappings>
+      </deni:SlaveConfig>
+    </Slave>
+    <Cyclic>
+      <CycleTime>1000000</CycleTime>
+      <Frame>
+        <Cmd>
+          <State>SAFEOP</State>
+          <State>OP</State>
+          <Comment><![CDATA[cyclic cmd]]></Comment>
+          <Cmd>12</Cmd>
+          <Addr>65536</Addr>
+          <DataLength>302</DataLength>
+          <Cnt>5</Cnt>
+          <OutputOffs>0</OutputOffs>
+          <InputOffs>127</InputOffs>
+        </Cmd>
+        <Cmd>
+          <State>PREOP</State>
+          <State>SAFEOP</State>
+          <State>OP</State>
+          <Comment><![CDATA[mailbox state polling]]></Comment>
+          <Cmd>10</Cmd>
+          <Addr>768</Addr>
+          <DataLength>1</DataLength>
+          <Cnt>5</Cnt>
+        </Cmd>
+      </Frame>
+      <Frame>
+        <Cmd>
+          <State>SAFEOP</State>
+          <State>OP</State>
+          <Comment><![CDATA[slave 1 AL status]]></Comment>
+          <Cmd>4</Cmd>
+          <Adp>4097</Adp>
+          <Ado>304</Ado>
+          <DataLength>2</DataLength>
+          <Cnt>1</Cnt>
+        </Cmd>
+        <Cmd>
+          <State>SAFEOP</State>
+          <State>OP</State>
+          <Comment><![CDATA[slave 2 AL status]]></Comment>
+          <Cmd>4</Cmd>
+          <Adp>4098</Adp>
+          <Ado>304</Ado>
+          <DataLength>2</DataLength>
+          <Cnt>1</Cnt>
+        </Cmd>
+        <Cmd>
+          <State>SAFEOP</State>
+          <State>OP</State>
+          <Comment><![CDATA[slave 3 AL status]]></Comment>
+          <Cmd>4</Cmd>
+          <Adp>4099</Adp>
+          <Ado>304</Ado>
+          <DataLength>2</DataLength>
+          <Cnt>1</Cnt>
+        </Cmd>
+        <Cmd>
+          <State>SAFEOP</State>
+          <State>OP</State>
+          <Comment><![CDATA[slave 4 AL status]]></Comment>
+          <Cmd>4</Cmd>
+          <Adp>4100</Adp>
+          <Ado>304</Ado>
+          <DataLength>2</DataLength>
+          <Cnt>1</Cnt>
+        </Cmd>
+        <Cmd>
+          <State>SAFEOP</State>
+          <State>OP</State>
+          <Comment><![CDATA[slave 5 AL status]]></Comment>
+          <Cmd>4</Cmd>
+          <Adp>4101</Adp>
+          <Ado>304</Ado>
+          <DataLength>2</DataLength>
+          <Cnt>1</Cnt>
+        </Cmd>
+      </Frame>
+    </Cyclic>
+    <ProcessImage>
+      <Inputs>
+        <ByteSize>175</ByteSize>
+        <Variable>
+          <Name>STF-EC.TxPDO 1.ErrorCode</Name>
+          <DataType>UINT</DataType>
+          <BitSize>16</BitSize>
+          <BitOffs>0</BitOffs>
+          <Comment><![CDATA[0x603F:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 1.StatusWord</Name>
+          <DataType>UINT</DataType>
+          <BitSize>16</BitSize>
+          <BitOffs>16</BitOffs>
+          <Comment><![CDATA[0x6041:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 1.Modes of operation display</Name>
+          <DataType>SINT</DataType>
+          <BitSize>8</BitSize>
+          <BitOffs>32</BitOffs>
+          <Comment><![CDATA[0x6061:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 2.Position actual value</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>40</BitOffs>
+          <Comment><![CDATA[0x6064:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 3.Velocity actual value</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>72</BitOffs>
+          <Comment><![CDATA[0x606C:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 4.Digital inputs</Name>
+          <DataType>UDINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>104</BitOffs>
+          <Comment><![CDATA[0x60FD:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 4.Touch probe status</Name>
+          <DataType>UINT</DataType>
+          <BitSize>16</BitSize>
+          <BitOffs>136</BitOffs>
+          <Comment><![CDATA[0x60B9:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 4.Touch probe pos1 pos value</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>152</BitOffs>
+          <Comment><![CDATA[0x60BA:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 4.Touch probe pos1 neg value</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>184</BitOffs>
+          <Comment><![CDATA[0x60BB:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 4.Touch probe pos2 pos value</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>216</BitOffs>
+          <Comment><![CDATA[0x60BC:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 4.Touch probe pos2 neg value</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>248</BitOffs>
+          <Comment><![CDATA[0x60BD:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 1.ErrorCode</Name>
+          <DataType>UINT</DataType>
+          <BitSize>16</BitSize>
+          <BitOffs>280</BitOffs>
+          <Comment><![CDATA[0x603F:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 1.StatusWord</Name>
+          <DataType>UINT</DataType>
+          <BitSize>16</BitSize>
+          <BitOffs>296</BitOffs>
+          <Comment><![CDATA[0x6041:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 1.Modes of operation display</Name>
+          <DataType>SINT</DataType>
+          <BitSize>8</BitSize>
+          <BitOffs>312</BitOffs>
+          <Comment><![CDATA[0x6061:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 2.Position actual value</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>320</BitOffs>
+          <Comment><![CDATA[0x6064:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 3.Velocity actual value</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>352</BitOffs>
+          <Comment><![CDATA[0x606C:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 4.Digital inputs</Name>
+          <DataType>UDINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>384</BitOffs>
+          <Comment><![CDATA[0x60FD:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 4.Touch probe status</Name>
+          <DataType>UINT</DataType>
+          <BitSize>16</BitSize>
+          <BitOffs>416</BitOffs>
+          <Comment><![CDATA[0x60B9:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 4.Touch probe pos1 pos value</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>432</BitOffs>
+          <Comment><![CDATA[0x60BA:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 4.Touch probe pos1 neg value</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>464</BitOffs>
+          <Comment><![CDATA[0x60BB:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 4.Touch probe pos2 pos value</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>496</BitOffs>
+          <Comment><![CDATA[0x60BC:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 4.Touch probe pos2 neg value</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>528</BitOffs>
+          <Comment><![CDATA[0x60BD:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 1.ErrorCode</Name>
+          <DataType>UINT</DataType>
+          <BitSize>16</BitSize>
+          <BitOffs>560</BitOffs>
+          <Comment><![CDATA[0x603F:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 1.StatusWord</Name>
+          <DataType>UINT</DataType>
+          <BitSize>16</BitSize>
+          <BitOffs>576</BitOffs>
+          <Comment><![CDATA[0x6041:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 1.Modes of operation display</Name>
+          <DataType>SINT</DataType>
+          <BitSize>8</BitSize>
+          <BitOffs>592</BitOffs>
+          <Comment><![CDATA[0x6061:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 2.Position actual value</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>600</BitOffs>
+          <Comment><![CDATA[0x6064:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 3.Velocity actual value</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>632</BitOffs>
+          <Comment><![CDATA[0x606C:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 4.Digital inputs</Name>
+          <DataType>UDINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>664</BitOffs>
+          <Comment><![CDATA[0x60FD:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 4.Touch probe status</Name>
+          <DataType>UINT</DataType>
+          <BitSize>16</BitSize>
+          <BitOffs>696</BitOffs>
+          <Comment><![CDATA[0x60B9:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 4.Touch probe pos1 pos value</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>712</BitOffs>
+          <Comment><![CDATA[0x60BA:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 4.Touch probe pos1 neg value</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>744</BitOffs>
+          <Comment><![CDATA[0x60BB:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 4.Touch probe pos2 pos value</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>776</BitOffs>
+          <Comment><![CDATA[0x60BC:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 4.Touch probe pos2 neg value</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>808</BitOffs>
+          <Comment><![CDATA[0x60BD:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 1.ErrorCode</Name>
+          <DataType>UINT</DataType>
+          <BitSize>16</BitSize>
+          <BitOffs>840</BitOffs>
+          <Comment><![CDATA[0x603F:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 1.StatusWord</Name>
+          <DataType>UINT</DataType>
+          <BitSize>16</BitSize>
+          <BitOffs>856</BitOffs>
+          <Comment><![CDATA[0x6041:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 1.Modes of operation display</Name>
+          <DataType>SINT</DataType>
+          <BitSize>8</BitSize>
+          <BitOffs>872</BitOffs>
+          <Comment><![CDATA[0x6061:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 2.Position actual value</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>880</BitOffs>
+          <Comment><![CDATA[0x6064:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 3.Velocity actual value</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>912</BitOffs>
+          <Comment><![CDATA[0x606C:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 4.Digital inputs</Name>
+          <DataType>UDINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>944</BitOffs>
+          <Comment><![CDATA[0x60FD:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 4.Touch probe status</Name>
+          <DataType>UINT</DataType>
+          <BitSize>16</BitSize>
+          <BitOffs>976</BitOffs>
+          <Comment><![CDATA[0x60B9:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 4.Touch probe pos1 pos value</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>992</BitOffs>
+          <Comment><![CDATA[0x60BA:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 4.Touch probe pos1 neg value</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>1024</BitOffs>
+          <Comment><![CDATA[0x60BB:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 4.Touch probe pos2 pos value</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>1056</BitOffs>
+          <Comment><![CDATA[0x60BC:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 4.Touch probe pos2 neg value</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>1088</BitOffs>
+          <Comment><![CDATA[0x60BD:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 1.ErrorCode</Name>
+          <DataType>UINT</DataType>
+          <BitSize>16</BitSize>
+          <BitOffs>1120</BitOffs>
+          <Comment><![CDATA[0x603F:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 1.StatusWord</Name>
+          <DataType>UINT</DataType>
+          <BitSize>16</BitSize>
+          <BitOffs>1136</BitOffs>
+          <Comment><![CDATA[0x6041:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 1.Modes of operation display</Name>
+          <DataType>SINT</DataType>
+          <BitSize>8</BitSize>
+          <BitOffs>1152</BitOffs>
+          <Comment><![CDATA[0x6061:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 2.Position actual value</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>1160</BitOffs>
+          <Comment><![CDATA[0x6064:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 3.Velocity actual value</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>1192</BitOffs>
+          <Comment><![CDATA[0x606C:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 4.Digital inputs</Name>
+          <DataType>UDINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>1224</BitOffs>
+          <Comment><![CDATA[0x60FD:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 4.Touch probe status</Name>
+          <DataType>UINT</DataType>
+          <BitSize>16</BitSize>
+          <BitOffs>1256</BitOffs>
+          <Comment><![CDATA[0x60B9:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 4.Touch probe pos1 pos value</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>1272</BitOffs>
+          <Comment><![CDATA[0x60BA:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 4.Touch probe pos1 neg value</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>1304</BitOffs>
+          <Comment><![CDATA[0x60BB:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 4.Touch probe pos2 pos value</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>1336</BitOffs>
+          <Comment><![CDATA[0x60BC:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.TxPDO 4.Touch probe pos2 neg value</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>1368</BitOffs>
+          <Comment><![CDATA[0x60BD:#x0]]></Comment>
+        </Variable>
+      </Inputs>
+      <Outputs>
+        <ByteSize>127</ByteSize>
+        <Variable>
+          <Name>STF-EC.RxPDO 1.ControlWord</Name>
+          <DataType>UINT</DataType>
+          <BitSize>16</BitSize>
+          <BitOffs>0</BitOffs>
+          <Comment><![CDATA[0x6040:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 1.Modes of operation</Name>
+          <DataType>SINT</DataType>
+          <BitSize>8</BitSize>
+          <BitOffs>16</BitOffs>
+          <Comment><![CDATA[0x6060:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 1.Target position</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>24</BitOffs>
+          <Comment><![CDATA[0x607A:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 2.Profile velocity</Name>
+          <DataType>UDINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>56</BitOffs>
+          <Comment><![CDATA[0x6081:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 2.Profile acceleration</Name>
+          <DataType>UDINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>88</BitOffs>
+          <Comment><![CDATA[0x6083:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 2.Profile deceleration</Name>
+          <DataType>UDINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>120</BitOffs>
+          <Comment><![CDATA[0x6084:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 3.Target Velocity</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>152</BitOffs>
+          <Comment><![CDATA[0x60FF:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 4.Digital outputs</Name>
+          <DataType>UDINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>184</BitOffs>
+          <Comment><![CDATA[0x60FE:#x1]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 4.Touch probe function</Name>
+          <DataType>UINT</DataType>
+          <BitSize>16</BitSize>
+          <BitOffs>216</BitOffs>
+          <Comment><![CDATA[0x60B8:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 1.ControlWord</Name>
+          <DataType>UINT</DataType>
+          <BitSize>16</BitSize>
+          <BitOffs>232</BitOffs>
+          <Comment><![CDATA[0x6040:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 1.Modes of operation</Name>
+          <DataType>SINT</DataType>
+          <BitSize>8</BitSize>
+          <BitOffs>248</BitOffs>
+          <Comment><![CDATA[0x6060:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 1.Target position</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>256</BitOffs>
+          <Comment><![CDATA[0x607A:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 2.Profile velocity</Name>
+          <DataType>UDINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>288</BitOffs>
+          <Comment><![CDATA[0x6081:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 2.Profile acceleration</Name>
+          <DataType>UDINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>320</BitOffs>
+          <Comment><![CDATA[0x6083:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 2.Profile deceleration</Name>
+          <DataType>UDINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>352</BitOffs>
+          <Comment><![CDATA[0x6084:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 3.Target Velocity</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>384</BitOffs>
+          <Comment><![CDATA[0x60FF:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 4.Digital outputs</Name>
+          <DataType>UDINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>416</BitOffs>
+          <Comment><![CDATA[0x60FE:#x1]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 4.Touch probe function</Name>
+          <DataType>UINT</DataType>
+          <BitSize>16</BitSize>
+          <BitOffs>448</BitOffs>
+          <Comment><![CDATA[0x60B8:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 1.ControlWord</Name>
+          <DataType>UINT</DataType>
+          <BitSize>16</BitSize>
+          <BitOffs>464</BitOffs>
+          <Comment><![CDATA[0x6040:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 1.Modes of operation</Name>
+          <DataType>SINT</DataType>
+          <BitSize>8</BitSize>
+          <BitOffs>480</BitOffs>
+          <Comment><![CDATA[0x6060:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 1.Target position</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>488</BitOffs>
+          <Comment><![CDATA[0x607A:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 2.Profile velocity</Name>
+          <DataType>UDINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>520</BitOffs>
+          <Comment><![CDATA[0x6081:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 2.Profile acceleration</Name>
+          <DataType>UDINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>552</BitOffs>
+          <Comment><![CDATA[0x6083:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 2.Profile deceleration</Name>
+          <DataType>UDINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>584</BitOffs>
+          <Comment><![CDATA[0x6084:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 3.Target Velocity</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>616</BitOffs>
+          <Comment><![CDATA[0x60FF:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 4.Digital outputs</Name>
+          <DataType>UDINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>648</BitOffs>
+          <Comment><![CDATA[0x60FE:#x1]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 4.Touch probe function</Name>
+          <DataType>UINT</DataType>
+          <BitSize>16</BitSize>
+          <BitOffs>680</BitOffs>
+          <Comment><![CDATA[0x60B8:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 1.ControlWord</Name>
+          <DataType>UINT</DataType>
+          <BitSize>16</BitSize>
+          <BitOffs>696</BitOffs>
+          <Comment><![CDATA[0x6040:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 1.Modes of operation</Name>
+          <DataType>SINT</DataType>
+          <BitSize>8</BitSize>
+          <BitOffs>712</BitOffs>
+          <Comment><![CDATA[0x6060:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 1.Target position</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>720</BitOffs>
+          <Comment><![CDATA[0x607A:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 2.Profile velocity</Name>
+          <DataType>UDINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>752</BitOffs>
+          <Comment><![CDATA[0x6081:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 2.Profile acceleration</Name>
+          <DataType>UDINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>784</BitOffs>
+          <Comment><![CDATA[0x6083:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 2.Profile deceleration</Name>
+          <DataType>UDINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>816</BitOffs>
+          <Comment><![CDATA[0x6084:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 3.Target Velocity</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>848</BitOffs>
+          <Comment><![CDATA[0x60FF:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 4.Digital outputs</Name>
+          <DataType>UDINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>880</BitOffs>
+          <Comment><![CDATA[0x60FE:#x1]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 4.Touch probe function</Name>
+          <DataType>UINT</DataType>
+          <BitSize>16</BitSize>
+          <BitOffs>912</BitOffs>
+          <Comment><![CDATA[0x60B8:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 1.ControlWord</Name>
+          <DataType>UINT</DataType>
+          <BitSize>16</BitSize>
+          <BitOffs>928</BitOffs>
+          <Comment><![CDATA[0x6040:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 1.Modes of operation</Name>
+          <DataType>SINT</DataType>
+          <BitSize>8</BitSize>
+          <BitOffs>944</BitOffs>
+          <Comment><![CDATA[0x6060:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 1.Target position</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>952</BitOffs>
+          <Comment><![CDATA[0x607A:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 2.Profile velocity</Name>
+          <DataType>UDINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>984</BitOffs>
+          <Comment><![CDATA[0x6081:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 2.Profile acceleration</Name>
+          <DataType>UDINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>1016</BitOffs>
+          <Comment><![CDATA[0x6083:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 2.Profile deceleration</Name>
+          <DataType>UDINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>1048</BitOffs>
+          <Comment><![CDATA[0x6084:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 3.Target Velocity</Name>
+          <DataType>DINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>1080</BitOffs>
+          <Comment><![CDATA[0x60FF:#x0]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 4.Digital outputs</Name>
+          <DataType>UDINT</DataType>
+          <BitSize>32</BitSize>
+          <BitOffs>1112</BitOffs>
+          <Comment><![CDATA[0x60FE:#x1]]></Comment>
+        </Variable>
+        <Variable>
+          <Name>STF-EC.RxPDO 4.Touch probe function</Name>
+          <DataType>UINT</DataType>
+          <BitSize>16</BitSize>
+          <BitOffs>1144</BitOffs>
+          <Comment><![CDATA[0x60B8:#x0]]></Comment>
+        </Variable>
+      </Outputs>
+    </ProcessImage>
+    <deni:Checksum algorithm="SHA256" generated="2026-06-17 09:09:27">1030ae7a6a6ac3205dc6847d3957cff9284a64cbbddb4cfeb36bcc38331361f7</deni:Checksum>
+  </Config>
+</EtherCATConfig>

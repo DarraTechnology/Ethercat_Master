@@ -1,0 +1,18 @@
+把 config.deni 放到本目录
+========================================
+
+本案例需要一份 STF-EC 从站的 config.deni 才能运行。
+config.deni 必须用 Darra 主站 GUI 扫描真实 STF-EC 从站后导出, 不能手工编写
+(它带 SHA256 校验 + 逐字节 PDO/FMMU 启动指令, 必须对应真实从站)。
+
+导出步骤:
+1. 用 Darra 主站 GUI 扫描总线, 识别到 STF-EC 从站
+   (厂商 Shanghai AMP&MOONS' Automation, VendorId 0x00000168, ProductCode 0x02)。
+2. 保持 STF-EC 默认 PDO 分配:
+   RxPDO (0x1C12) = 0x1600 + 0x1601 + 0x1602 + 0x1603  (29 字节)
+   TxPDO (0x1C13) = 0x1A00 + 0x1A01 + 0x1A02 + 0x1A03  (19 字节)
+   该默认分配同时包含 CSP 与 PP 需要的全部对象, CSP/PP 共用同一份 config.deni。
+3. 导出 config.deni, 覆盖到本目录 (与 EtherCATRestore.csproj 同级)。
+
+放好后, 主程序 STF-EC_CSP_PP 与本恢复程序均会自动读取它。
+详见上级目录 README.md。

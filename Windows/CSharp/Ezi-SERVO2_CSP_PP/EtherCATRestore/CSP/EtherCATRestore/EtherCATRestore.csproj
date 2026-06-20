@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0-windows</TargetFramework>
+        <ImplicitUsings>disable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <PlatformTarget>x64</PlatformTarget>
+    </PropertyGroup>
+    <!-- SDK: NuGet.org 在线包 Darra.EtherCAT (含 native Darra.Core.dll, NuGet 自动复制) -->
+    <ItemGroup>
+        <PackageReference Include="Darra.EtherCAT.Master" Version="2.7.0" />
+    </ItemGroup>
+    <!-- 复制 config.deni 到输出目录 -->
+    <ItemGroup>
+        <None Update="config.deni">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+</Project>
