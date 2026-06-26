@@ -55,6 +55,8 @@ All Windows examples are WinForms apps targeting **.NET Framework 4.7.2 (x64)** 
 | [STF-EC_CSP_PP](Windows/CSharp/STF-EC_CSP_PP/) | STF-EC stepper (MOONS') | CSP + PP | Multi (auto) | Multi-axis overview table, global + per-axis control; one DENI also supports PV / CSV / HM / vendor mode |
 | [STF-EC_ECam](Windows/CSharp/STF-EC_ECam/) | STF-EC stepper (MOONS') | CSP (Electronic Cam) | Multi (auto) | Virtual master + cam curves (sine / cycloid / linear) + per-axis phase offset, group-stop alarms |
 | [STF-EC_SyncAxis](Windows/CSharp/STF-EC_SyncAxis/) | STF-EC stepper (MOONS') | CSP (Electronic Gear) | Multi (auto) | Virtual master + per-axis gear ratio (1:1 lockstep, N:1 gearing), sync alarms |
+| [Panasonic_CNC_Interpolation](Windows/CSharp/Panasonic_CNC_Interpolation/) | Panasonic MINAS A6B servo | CSP (Interpolation) | Multi (X/Y/Z) | Linear G01 + circular G02/G03 interpolation, trapezoidal / S-curve accel, look-ahead, 2D path preview |
+| [Panasonic_ConveyorSync](Windows/CSharp/Panasonic_ConveyorSync/) | Panasonic MINAS A6B servo | CSP (Master-Slave) | Multi (auto) | Virtual / encoder master + per-axis gear/phase follow, touch-probe material tracking, flying pick |
 
 **Motion-mode primer**
 
@@ -62,12 +64,16 @@ All Windows examples are WinForms apps targeting **.NET Framework 4.7.2 (x64)** 
 - **PP** (Profile Position, `0x6060 = 1`): the master sends one target + profile velocity; the **drive** generates the trapezoidal trajectory internally. Free-Run, no DC needed — ideal for point-to-point moves.
 - **Electronic Cam** builds on CSP: a virtual master phase drives each slave through a cam curve `s = f(phase)`.
 - **Electronic Gear** is the linear special case of the cam: slave position = master position × ratio.
+- **Trajectory interpolation** builds on CSP: the master computes multi-axis coordinates along a blended path every cycle (line / arc) with accel planning (trapezoidal / S-curve) and corner look-ahead (CNC milling / laser cutting / 3D printing).
+- **Master-slave sync + material tracking**: a virtual / encoder master drives multiple conveyors that follow by gear/phase; products are latched by Touch Probe, tracked downstream, and picked on-the-fly when they reach the pick zone (sortation / line hand-off).
 
 The multi-axis STF-EC examples size their UI from the **actually scanned** slave count (`master.SlaveCount`); the bundled `config.deni` contains **5 STF-EC** slaves but the code adapts automatically to whatever topology you load.
 
 ---
 
 ## Getting Started (Windows / C#)
+
+> **Full deployment / master-driver install / drive setup (PANATERM) / config.deni export / calibration (pulses-per-mm, soft limits, gear ratio, pick-zone) + a "two motors from scratch" bring-up are in [COMMISSIONING.md](COMMISSIONING.md).**
 
 1. **Open** the example's `.csproj` in Visual Studio (platform target is fixed to **x64** — the native `Darra.Core.dll` is x64 only).
 2. **Build.** NuGet restores `Darra.EtherCAT.Master`; the bundled `config.deni` and native DLLs are copied to `bin\Debug\`.
@@ -95,7 +101,9 @@ Darra_EtherCAT_Case/
         ├── Ezi-SERVO2_CSP_PP/    # single-axis servo, CSP + PP
         ├── STF-EC_CSP_PP/        # multi-axis stepper, CSP + PP
         ├── STF-EC_ECam/          # multi-axis electronic cam (CSP)
-        └── STF-EC_SyncAxis/      # multi-axis electronic gear (CSP)
+        ├── STF-EC_SyncAxis/      # multi-axis electronic gear (CSP)
+        ├── Panasonic_CNC_Interpolation/  # multi-axis CNC trajectory interpolation (CSP, Panasonic A6B)
+        └── Panasonic_ConveyorSync/       # conveyor master-slave sync + material tracking (CSP, Panasonic A6B)
 ```
 
 Each example folder has its **own README** with device info, PDO mapping, the SDK APIs it uses, alarm/diagnostics behavior, and step-by-step operation.

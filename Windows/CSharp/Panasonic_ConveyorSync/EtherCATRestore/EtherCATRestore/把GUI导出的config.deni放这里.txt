@@ -1,0 +1,18 @@
+把 config.deni 放到本目录
+========================================
+
+本案例需要一份松下 MINAS A6B 伺服从站的 config.deni 才能运行。
+config.deni 必须用 Darra 主站 GUI 扫描真实松下 A6B 从站后导出, 不能手工编写
+(它带 SHA256 校验 + 逐字节 PDO/FMMU 启动指令, 必须对应真实从站)。
+
+导出步骤:
+1. 用 Darra 主站 GUI 扫描总线, 识别到松下 MINAS A6B 伺服从站
+   (来源 ESI: panasonic_minas-a6bf_v1_9_1_0_117_0.xml)。
+2. 保持松下 A6B 默认 PDO 分配:
+   RxPDO (0x1C12) = 0x1600  (9 字节: 控制字 / 运行模式 / 目标位置 / Touch Probe 功能)
+   TxPDO (0x1C13) = 0x1A00  (23 字节: 错误码 / 状态字 / 实际位置 / Touch Probe 状态与捕获值 / 跟随误差 / 数字输入)
+   该默认分配同时包含 CSP 主从同步与 Touch Probe 捕获需要的全部对象。
+3. 导出 config.deni, 覆盖到本目录 (与 EtherCATRestore.csproj 同级)。
+
+放好后, 主程序 Panasonic_ConveyorSync 与本恢复程序均会自动读取它。
+详见上级目录 README.md。

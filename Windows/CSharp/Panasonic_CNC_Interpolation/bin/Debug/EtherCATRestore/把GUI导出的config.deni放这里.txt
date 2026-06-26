@@ -1,0 +1,21 @@
+把 config.deni 放到本目录
+========================================
+
+本案例需要一份松下 MINAS A6B 伺服从站的 config.deni 才能运行。
+config.deni 必须用 Darra 主站 GUI 扫描真实松下 A6B 从站后导出, 不能手工编写
+(它带 SHA256 校验 + 逐字节 PDO/FMMU 启动指令, 必须对应真实从站)。
+
+本案例是 CNC 多轴轨迹插补, 需要至少 2 个轴 (X/Y 平面), 推荐 3 个轴 (X/Y/Z);
+扫描到的从站默认按顺序指定为 slave0=X、slave1=Y、slave2=Z, 不足的轴会被禁用。
+
+导出步骤:
+1. 用 Darra 主站 GUI 扫描总线, 识别到松下 MINAS A6B 伺服从站
+   (厂商 Panasonic, ESI: panasonic_minas-a6bf_v1_9_1_0_117_0.xml)。
+2. 保持松下 A6B 默认 PDO 分配 (CSP 必须用):
+   RxPDO (0x1C12) = 0x1600  (9 字节)
+   TxPDO (0x1C13) = 0x1A00  (23 字节)
+   该默认分配包含 CSP (Mode=8) 插补所需的全部对象。
+3. 导出 config.deni, 覆盖到本目录 (与 EtherCATRestore.csproj 同级)。
+
+放好后, 主程序 Panasonic_CNC_Interpolation 与本恢复程序均会自动读取它。
+详见上级目录 README.md。

@@ -55,6 +55,8 @@ Darra EtherCAT Master 是一套跨平台 EtherCAT 主站开发套件，覆盖从
 | [STF-EC_CSP_PP](Windows/CSharp/STF-EC_CSP_PP/) | STF-EC 步进 (鸣志 MOONS') | CSP + PP | 多轴 (自适应) | 多轴总览表、全局 + 单轴控制；同一份 DENI 还支持 PV / CSV / HM / 厂商模式 |
 | [STF-EC_ECam](Windows/CSharp/STF-EC_ECam/) | STF-EC 步进 (鸣志 MOONS') | CSP (电子凸轮) | 多轴 (自适应) | 虚拟主轴 + 凸轮曲线 (正弦 / 摆线 / 直线) + 逐轴相位偏移、组停报警 |
 | [STF-EC_SyncAxis](Windows/CSharp/STF-EC_SyncAxis/) | STF-EC 步进 (鸣志 MOONS') | CSP (电子齿轮) | 多轴 (自适应) | 虚拟主轴 + 逐轴齿比 (1:1 同步 / N:1 齿轮联动)、同步报警 |
+| [Panasonic_CNC_Interpolation](Windows/CSharp/Panasonic_CNC_Interpolation/) | 松下 MINAS A6B 伺服 | CSP (轨迹插补) | 多轴 (X/Y/Z) | 直线 G01 + 圆弧 G02/G03 插补、梯形 / S 曲线加减速、前瞻 Look-Ahead、2D 路径预览 |
+| [Panasonic_ConveyorSync](Windows/CSharp/Panasonic_ConveyorSync/) | 松下 MINAS A6B 伺服 | CSP (主从同步) | 多轴 (自适应) | 虚拟 / 编码器主轴 + 从轴齿比 / 相位跟随、Touch Probe 物料跟踪、抓取区飞行抓取 |
 
 **运动模式速览**
 
@@ -62,12 +64,16 @@ Darra EtherCAT Master 是一套跨平台 EtherCAT 主站开发套件，覆盖从
 - **PP** (轮廓位置, `0x6060 = 1`)：主站发一个目标 + 轮廓速度，由**驱动器**内部生成梯形轨迹。Free-Run，无需 DC —— 适合点到点定位。
 - **电子凸轮** 建立在 CSP 之上：一根虚拟主轴相位驱动每根从轴按凸轮曲线 `s = f(相位)` 运动。
 - **电子齿轮** 是凸轮的线性特例：从轴位置 = 主轴位置 × 齿比。
+- **轨迹插补** 建立在 CSP 之上：主站沿合成路径每周期算出多轴坐标 (直线 / 圆弧) + 加减速规划 (梯形 / S 曲线) + 前瞻拐角衔接 (CNC 铣 / 激光切割 / 3D 打印)。
+- **主从同步 + 物料跟踪**：虚拟 / 编码器主轴驱动多条传送带按齿比 / 相位跟随，物料经 Touch Probe 捕获后随带推进，进入抓取区由抓取轴飞行同步 (物流分拣 / 产线对接)。
 
 多轴 STF-EC 案例的界面**按实际扫描到的从站数** (`master.SlaveCount`) 自动生成；随附 `config.deni` 含 **5 个 STF-EC**，但代码会自动适配你加载的任意拓扑。
 
 ---
 
 ## 快速开始 (Windows / C#)
+
+> **完整部署 / 安装主站驱动 / 配置驱动(PANATERM) / 导出 config.deni / 校准（脉冲当量、软限位、齿比、抓取区+传感器偏置）+ "两台电机从零跑通" 流程见 [COMMISSIONING.md](COMMISSIONING.md)。**
 
 1. **打开** 案例的 `.csproj` (平台目标固定 **x64**，原生 `Darra.Core.dll` 仅 x64)。
 2. **编译。** NuGet 还原 `Darra.EtherCAT.Master`；随附的 `config.deni` 与原生 DLL 会复制到 `bin\Debug\`。
@@ -95,7 +101,9 @@ Darra_EtherCAT_Case/
         ├── Ezi-SERVO2_CSP_PP/    # 单轴伺服，CSP + PP
         ├── STF-EC_CSP_PP/        # 多轴步进，CSP + PP
         ├── STF-EC_ECam/          # 多轴电子凸轮 (CSP)
-        └── STF-EC_SyncAxis/      # 多轴电子齿轮 (CSP)
+        ├── STF-EC_SyncAxis/      # 多轴电子齿轮 (CSP)
+        ├── Panasonic_CNC_Interpolation/  # 多轴 CNC 轨迹插补 (CSP, 松下 A6B)
+        └── Panasonic_ConveyorSync/       # 传送带主从同步 + 物料跟踪 (CSP, 松下 A6B)
 ```
 
 每个案例目录都有**自己的 README**，含设备信息、PDO 映射、所用 SDK API、报警 / 诊断行为与分步操作。
