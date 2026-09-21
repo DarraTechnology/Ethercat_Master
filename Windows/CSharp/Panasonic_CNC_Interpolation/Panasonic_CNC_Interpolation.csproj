@@ -9,6 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Panasonic_CNC_Interpolation</RootNamespace>
     <AssemblyName>Panasonic_CNC_Interpolation</AssemblyName>
+    <RuntimeIdentifiers>win-x64</RuntimeIdentifiers>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -84,7 +85,7 @@
   </ItemGroup>
   <!-- SDK: NuGet.org 在线包 Darra.EtherCAT (含 native Darra.Core.dll) -->
   <ItemGroup>
-    <PackageReference Include="Darra.EtherCAT.Master" Version="2.7.0" />
+    <PackageReference Include="Darra.EtherCAT.Master" Version="2.9.140" />
   </ItemGroup>
   <!-- EtherCATRestore 导出项目 (单一配置, 松下 A6B 默认 PDO 含 CSP 全部对象) - 通配符自动包含, 排除 obj/bin -->
   <ItemGroup>

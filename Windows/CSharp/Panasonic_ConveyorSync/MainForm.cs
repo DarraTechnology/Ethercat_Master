@@ -611,7 +611,7 @@ namespace Panasonic_ConveyorSync
                     // 逐轴 PDO 初始化 (SafeOp 后, OP 前): CSP, 目标位置 = 当前实际位置 (避免上电跳变)
                     for (int i = 0; i < slaveCount; i++)
                     {
-                        ref var input = ref newMaster.Slaves[i].PDO.InputsMapping<PA_Input>();
+                        ref readonly var input = ref newMaster.Slaves[i].PDO.InputsMapping<PA_Input>();
                         ref var output = ref newMaster.Slaves[i].PDO.OutputsMapping<PA_Output>();
                         output.ModesOfOperation = 8;
                         output.TargetPosition = input.PositionActualValue;
@@ -624,7 +624,7 @@ namespace Panasonic_ConveyorSync
                     for (int i = 0; i < slaveCount; i++)
                     {
                         ref var tOut = ref newMaster.Slaves[i].PDO.OutputsMapping<PA_Output>();
-                        ref var tIn = ref newMaster.Slaves[i].PDO.InputsMapping<PA_Input>();
+                        ref readonly var tIn = ref newMaster.Slaves[i].PDO.InputsMapping<PA_Input>();
                         tOut.ControlWord = 0;
                         tOut.ModesOfOperation = 8;
                         tOut.TargetPosition = tIn.PositionActualValue;

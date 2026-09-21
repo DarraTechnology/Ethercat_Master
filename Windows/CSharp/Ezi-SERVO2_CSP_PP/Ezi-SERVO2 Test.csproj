@@ -9,6 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Darra_EtherCAT_Test</RootNamespace>
     <AssemblyName>Darra_EtherCAT_Test</AssemblyName>
+    <RuntimeIdentifiers>win-x64</RuntimeIdentifiers>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -84,7 +85,7 @@
   </ItemGroup>
   <!-- SDK: NuGet.org 鍦ㄧ嚎鍖?Darra.EtherCAT (鍚?native Darra.Core.dll) -->
   <ItemGroup>
-    <PackageReference Include="Darra.EtherCAT.Master" Version="2.7.0" />
+    <PackageReference Include="Darra.EtherCAT.Master" Version="2.9.140" />
   </ItemGroup>
   <!-- EtherCATRestore 瀵煎嚭椤圭洰 (CSP + PP) - 閫氶厤绗﹁嚜鍔ㄥ寘鍚紝鎺掗櫎 obj/bin -->
   <ItemGroup>

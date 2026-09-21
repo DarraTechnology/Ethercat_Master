@@ -275,13 +275,13 @@ namespace Darra_EtherCAT_Test
                     // PDO 初始化 (SafeOp 后, OP 前)
                     if (isCSP)
                     {
-                        ref var input = ref newMaster.Slaves[SLAVE_IDX].PDO.InputsMapping<CSP_Input>();
+                        ref readonly var input = ref newMaster.Slaves[SLAVE_IDX].PDO.InputsMapping<CSP_Input>();
                         ref var output = ref newMaster.Slaves[SLAVE_IDX].PDO.OutputsMapping<CSP_Output>();
                         output.TargetPosition = input.PositionActualValue;
                     }
                     else
                     {
-                        ref var input = ref newMaster.Slaves[SLAVE_IDX].PDO.InputsMapping<PP_Input>();
+                        ref readonly var input = ref newMaster.Slaves[SLAVE_IDX].PDO.InputsMapping<PP_Input>();
                         ref var output = ref newMaster.Slaves[SLAVE_IDX].PDO.OutputsMapping<PP_Output>();
                         output.ModesOfOperation = 1;
                         output.TargetPosition = input.PositionActualValue;
@@ -296,7 +296,7 @@ namespace Darra_EtherCAT_Test
                     if (!isCSP)
                     {
                         ref var tOut = ref newMaster.Slaves[SLAVE_IDX].PDO.OutputsMapping<PP_Output>();
-                        ref var tIn = ref newMaster.Slaves[SLAVE_IDX].PDO.InputsMapping<PP_Input>();
+                        ref readonly var tIn = ref newMaster.Slaves[SLAVE_IDX].PDO.InputsMapping<PP_Input>();
                         tOut.ControlWord = 0;
                         tOut.ModesOfOperation = 1;
                         tOut.TargetPosition = tIn.PositionActualValue;
@@ -407,7 +407,7 @@ namespace Darra_EtherCAT_Test
             {
                 var m = master;
                 if (m == null) return;
-                ref var input = ref m.Slaves[SLAVE_IDX].PDO.InputsMapping<CSP_Input>();
+                ref readonly var input = ref m.Slaves[SLAVE_IDX].PDO.InputsMapping<CSP_Input>();
                 ref var output = ref m.Slaves[SLAVE_IDX].PDO.OutputsMapping<CSP_Output>();
                 int currentTarget = input.PositionActualValue;
 
@@ -515,7 +515,7 @@ namespace Darra_EtherCAT_Test
             {
                 var m = master;
                 if (m == null) return;
-                ref var input = ref m.Slaves[SLAVE_IDX].PDO.InputsMapping<PP_Input>();
+                ref readonly var input = ref m.Slaves[SLAVE_IDX].PDO.InputsMapping<PP_Input>();
                 ref var output = ref m.Slaves[SLAVE_IDX].PDO.OutputsMapping<PP_Output>();
 
                 // PP 状态机 (绝对模式, Free Run)

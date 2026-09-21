@@ -713,7 +713,7 @@ namespace STF_EC_ECam
                     // 逐轴 PDO 初始化 (SafeOp 后, OP 前): 目标位置先对齐当前实际位置
                     for (int i = 0; i < slaveCount; i++)
                     {
-                        ref var input = ref newMaster.Slaves[i].PDO.InputsMapping<STF_Input>();
+                        ref readonly var input = ref newMaster.Slaves[i].PDO.InputsMapping<STF_Input>();
                         ref var output = ref newMaster.Slaves[i].PDO.OutputsMapping<STF_Output>();
                         output.ModesOfOperation = 8;
                         output.TargetPosition = input.PositionActualValue;
@@ -725,7 +725,7 @@ namespace STF_EC_ECam
                     for (int i = 0; i < slaveCount; i++)
                     {
                         ref var tOut = ref newMaster.Slaves[i].PDO.OutputsMapping<STF_Output>();
-                        ref var tIn = ref newMaster.Slaves[i].PDO.InputsMapping<STF_Input>();
+                        ref readonly var tIn = ref newMaster.Slaves[i].PDO.InputsMapping<STF_Input>();
                         tOut.ControlWord = 0;
                         tOut.ModesOfOperation = 8;
                         tOut.TargetPosition = tIn.PositionActualValue;
@@ -960,9 +960,9 @@ namespace STF_EC_ECam
                     for (int i = 0; i < arr.Length; i++)
                     {
                         var a = arr[i];
-                        ref var input = ref m.Slaves[a.SlaveIndex].PDO.InputsMapping<STF_Input>();
+                        ref readonly var input = ref m.Slaves[a.SlaveIndex].PDO.InputsMapping<STF_Input>();
                         ref var output = ref m.Slaves[a.SlaveIndex].PDO.OutputsMapping<STF_Output>();
-                        StepCam(a, ref input, ref output, curve, amp, phase);
+                        StepCam(a, in input, ref output, curve, amp, phase);
 
                         ushort sw = input.StatusWord;
                         a.SnapStatusWord = sw;
@@ -1017,7 +1017,7 @@ namespace STF_EC_ECam
         }
 
         // 单轴 CSP 凸轮跟随: 使能握手 (0x06->0x07->0x0F), OperationEnabled 时按凸轮算目标位置
-        void StepCam(AxisController a, ref STF_Input input, ref STF_Output output, int curve, int amp, double phase)
+        void StepCam(AxisController a, in STF_Input input, ref STF_Output output, int curve, int amp, double phase)
         {
             output.ModesOfOperation = 8;
             ushort sw = input.StatusWord;

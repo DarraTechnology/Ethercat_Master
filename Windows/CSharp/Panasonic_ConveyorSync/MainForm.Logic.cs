@@ -69,7 +69,7 @@ namespace Panasonic_ConveyorSync
                     _encoderInitPending = false;
                     if (_encoderMode && _encoderAxisIndex >= 0 && _encoderAxisIndex < arr.Length)
                     {
-                        ref var ein = ref m.Slaves[arr[_encoderAxisIndex].SlaveIndex].PDO.InputsMapping<PA_Input>();
+                        ref readonly var ein = ref m.Slaves[arr[_encoderAxisIndex].SlaveIndex].PDO.InputsMapping<PA_Input>();
                         _encoderBase = ein.PositionActualValue;
                     }
                 }
@@ -81,12 +81,12 @@ namespace Panasonic_ConveyorSync
                     _masterPos = 0;
                     if (_encoderMode && _encoderAxisIndex >= 0 && _encoderAxisIndex < arr.Length)
                     {
-                        ref var ein = ref m.Slaves[arr[_encoderAxisIndex].SlaveIndex].PDO.InputsMapping<PA_Input>();
+                        ref readonly var ein = ref m.Slaves[arr[_encoderAxisIndex].SlaveIndex].PDO.InputsMapping<PA_Input>();
                         _encoderBase = ein.PositionActualValue;
                     }
                     for (int i = 0; i < arr.Length; i++)
                     {
-                        ref var input = ref m.Slaves[arr[i].SlaveIndex].PDO.InputsMapping<PA_Input>();
+                        ref readonly var input = ref m.Slaves[arr[i].SlaveIndex].PDO.InputsMapping<PA_Input>();
                         arr[i].Base = input.PositionActualValue;
                         arr[i].CurrentTarget = input.PositionActualValue;
                         arr[i].GraceResetPending = true;
@@ -97,7 +97,7 @@ namespace Panasonic_ConveyorSync
                 // ② 推进主轴位置 (虚拟自增 / 编码器读数)
                 if (_encoderMode && _encoderAxisIndex >= 0 && _encoderAxisIndex < arr.Length)
                 {
-                    ref var ein = ref m.Slaves[arr[_encoderAxisIndex].SlaveIndex].PDO.InputsMapping<PA_Input>();
+                    ref readonly var ein = ref m.Slaves[arr[_encoderAxisIndex].SlaveIndex].PDO.InputsMapping<PA_Input>();
                     _masterPos = (long)ein.PositionActualValue - _encoderBase;
                 }
                 else
@@ -119,12 +119,12 @@ namespace Panasonic_ConveyorSync
                 for (int i = 0; i < arr.Length; i++)
                 {
                     var a = arr[i];
-                    ref var input = ref m.Slaves[a.SlaveIndex].PDO.InputsMapping<PA_Input>();
+                    ref readonly var input = ref m.Slaves[a.SlaveIndex].PDO.InputsMapping<PA_Input>();
                     ref var output = ref m.Slaves[a.SlaveIndex].PDO.OutputsMapping<PA_Output>();
 
                     string role = ComputeRoleString(i);
                     a.SnapRole = role;
-                    StepAxis(a, role, masterPos, pickActive, pickTravel, ref input, ref output);
+                    StepAxis(a, role, masterPos, pickActive, pickTravel, in input, ref output);
 
                     ushort sw = input.StatusWord;
                     a.SnapStatusWord = sw;
@@ -206,7 +206,7 @@ namespace Panasonic_ConveyorSync
             if (probeIdx >= 0 && probeIdx < arr.Length)
             {
                 var pa = arr[probeIdx];
-                ref var pin = ref m.Slaves[pa.SlaveIndex].PDO.InputsMapping<PA_Input>();
+                ref readonly var pin = ref m.Slaves[pa.SlaveIndex].PDO.InputsMapping<PA_Input>();
                 ref var pout = ref m.Slaves[pa.SlaveIndex].PDO.OutputsMapping<PA_Output>();
                 if (_captureSrc == 0)
                 {
@@ -302,7 +302,7 @@ namespace Panasonic_ConveyorSync
         //   主  = 编码器参考轴, 不驱动 (目标=实际, 保持);
         //   从  = 同步时按 Base + masterPos*Ratio + Phase 跟随, 否则保持;
         //   抓取= 仅当物料在抓取区时按 pickTravel 飞行跟随, 否则保持。
-        void StepAxis(AxisController a, string role, long masterPos, bool pickActive, long pickTravel, ref PA_Input input, ref PA_Output output)
+        void StepAxis(AxisController a, string role, long masterPos, bool pickActive, long pickTravel, in PA_Input input, ref PA_Output output)
         {
             output.ModesOfOperation = 8;
             ushort sw = input.StatusWord;

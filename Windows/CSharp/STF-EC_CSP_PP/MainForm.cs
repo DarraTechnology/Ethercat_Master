@@ -468,7 +468,7 @@ namespace STF_EC_CSP_PP
                     // 逐轴 PDO 初始化 (SafeOp 后, OP 前)
                     for (int i = 0; i < slaveCount; i++)
                     {
-                        ref var input = ref newMaster.Slaves[i].PDO.InputsMapping<STF_Input>();
+                        ref readonly var input = ref newMaster.Slaves[i].PDO.InputsMapping<STF_Input>();
                         ref var output = ref newMaster.Slaves[i].PDO.OutputsMapping<STF_Output>();
                         output.ModesOfOperation = (sbyte)(csp ? 8 : 1);
                         output.TargetPosition = input.PositionActualValue;
@@ -486,7 +486,7 @@ namespace STF_EC_CSP_PP
                     for (int i = 0; i < slaveCount; i++)
                     {
                         ref var tOut = ref newMaster.Slaves[i].PDO.OutputsMapping<STF_Output>();
-                        ref var tIn = ref newMaster.Slaves[i].PDO.InputsMapping<STF_Input>();
+                        ref readonly var tIn = ref newMaster.Slaves[i].PDO.InputsMapping<STF_Input>();
                         tOut.ControlWord = 0;
                         tOut.ModesOfOperation = (sbyte)(csp ? 8 : 1);
                         tOut.TargetPosition = tIn.PositionActualValue;
@@ -600,10 +600,10 @@ namespace STF_EC_CSP_PP
                     for (int i = 0; i < arr.Length; i++)
                     {
                         var a = arr[i];
-                        ref var input = ref m.Slaves[a.SlaveIndex].PDO.InputsMapping<STF_Input>();
+                        ref readonly var input = ref m.Slaves[a.SlaveIndex].PDO.InputsMapping<STF_Input>();
                         ref var output = ref m.Slaves[a.SlaveIndex].PDO.OutputsMapping<STF_Output>();
-                        if (csp) StepCsp(a, ref input, ref output);
-                        else StepPp(a, ref input, ref output);
+                        if (csp) StepCsp(a, in input, ref output);
+                        else StepPp(a, in input, ref output);
 
                         a.SnapStatusWord = input.StatusWord;
                         a.SnapActualPosition = input.PositionActualValue;
@@ -620,7 +620,7 @@ namespace STF_EC_CSP_PP
             }
         }
 
-        void StepCsp(AxisController a, ref STF_Input input, ref STF_Output output)
+        void StepCsp(AxisController a, in STF_Input input, ref STF_Output output)
         {
             output.ModesOfOperation = 8;
             ushort sw = input.StatusWord;
@@ -650,7 +650,7 @@ namespace STF_EC_CSP_PP
             a.SnapTargetPosition = a.CurrentTarget;
         }
 
-        void StepPp(AxisController a, ref STF_Input input, ref STF_Output output)
+        void StepPp(AxisController a, in STF_Input input, ref STF_Output output)
         {
             ushort sw = input.StatusWord;
             ushort cw = 0;

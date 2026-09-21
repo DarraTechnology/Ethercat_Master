@@ -568,7 +568,7 @@ namespace STF_EC_SyncAxis
                     // 逐轴 PDO 初始化 (SafeOp 后, OP 前): CSP, 目标位置 = 当前实际位置 (避免上电跳变)
                     for (int i = 0; i < slaveCount; i++)
                     {
-                        ref var input = ref newMaster.Slaves[i].PDO.InputsMapping<STF_Input>();
+                        ref readonly var input = ref newMaster.Slaves[i].PDO.InputsMapping<STF_Input>();
                         ref var output = ref newMaster.Slaves[i].PDO.OutputsMapping<STF_Output>();
                         output.ModesOfOperation = 8;
                         output.TargetPosition = input.PositionActualValue;
@@ -580,7 +580,7 @@ namespace STF_EC_SyncAxis
                     for (int i = 0; i < slaveCount; i++)
                     {
                         ref var tOut = ref newMaster.Slaves[i].PDO.OutputsMapping<STF_Output>();
-                        ref var tIn = ref newMaster.Slaves[i].PDO.InputsMapping<STF_Input>();
+                        ref readonly var tIn = ref newMaster.Slaves[i].PDO.InputsMapping<STF_Input>();
                         tOut.ControlWord = 0;
                         tOut.ModesOfOperation = 8;
                         tOut.TargetPosition = tIn.PositionActualValue;
@@ -801,7 +801,7 @@ namespace STF_EC_SyncAxis
                         _masterPos = 0;
                         for (int i = 0; i < arr.Length; i++)
                         {
-                            ref var input = ref m.Slaves[arr[i].SlaveIndex].PDO.InputsMapping<STF_Input>();
+                            ref readonly var input = ref m.Slaves[arr[i].SlaveIndex].PDO.InputsMapping<STF_Input>();
                             arr[i].Base = input.PositionActualValue;
                             arr[i].CurrentTarget = input.PositionActualValue;
                             arr[i].GraceResetPending = true;
@@ -818,9 +818,9 @@ namespace STF_EC_SyncAxis
                     for (int i = 0; i < arr.Length; i++)
                     {
                         var a = arr[i];
-                        ref var input = ref m.Slaves[a.SlaveIndex].PDO.InputsMapping<STF_Input>();
+                        ref readonly var input = ref m.Slaves[a.SlaveIndex].PDO.InputsMapping<STF_Input>();
                         ref var output = ref m.Slaves[a.SlaveIndex].PDO.OutputsMapping<STF_Output>();
-                        StepSync(a, masterPos, ref input, ref output);
+                        StepSync(a, masterPos, in input, ref output);
 
                         ushort sw = input.StatusWord;
                         a.SnapStatusWord = sw;
@@ -872,7 +872,7 @@ namespace STF_EC_SyncAxis
 
         // CSP 同步轴: CiA402 使能握手 (0x06→0x07→0x0F), 使能后按齿比跟随虚拟主轴。
         // 未使能 / 正在握手 / 故障时, 目标位置恒等于当前实际位置 (无跳变)。
-        void StepSync(AxisController a, long masterPos, ref STF_Input input, ref STF_Output output)
+        void StepSync(AxisController a, long masterPos, in STF_Input input, ref STF_Output output)
         {
             output.ModesOfOperation = 8;
             ushort sw = input.StatusWord;

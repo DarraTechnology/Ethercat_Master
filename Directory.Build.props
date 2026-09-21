@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 示例工程构建确定性: 把编译机绝对路径映射为中性前缀, 避免把构建目录写进发布的 exe/pdb。
+     只影响调试符号路径, 不影响代码与行为。 -->
+<Project>
+  <PropertyGroup>
+    <DeterministicSourcePaths>true</DeterministicSourcePaths>
+    <PathMap>$([System.String]::Copy('$(MSBuildThisFileDirectory)').TrimEnd('\'))=DarraExample</PathMap>
+  </PropertyGroup>
+</Project>

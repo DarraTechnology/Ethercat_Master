@@ -92,9 +92,7 @@ namespace EtherCATRestore
                 // master.Events.DCSyncLost += (masterIdx, slaveIdx, diffNs) =>
                 //     Console.WriteLine($"[DC] 从站{slaveIdx} 同步偏差: {diffNs}ns");
 
-                // 异常处理
-                master.RegisterExceptionHandler((idx, msg, ex) =>
-                    Console.WriteLine($"[异常] {msg}"));
+                // 异常与错误经下方 Logs 监听统一呈现 (SDK 无独立的异常回调注册入口)
 
                 // ── 日志监听 ──
                 // 过滤器: 仅显示错误、警告、一般信息 (可按需添加 Mailbox, PDO, Debug)
@@ -110,24 +108,21 @@ namespace EtherCATRestore
 
                 // ── 状态转换 (DENI 中的启动参数在状态转换时自动应用) ──
                 {
-                    var (ok, msg) = master.SetState(EcState.PreOp);
-                    if (!ok) throw new Exception($"切换到 PreOp 失败: {msg}");
+                    if (!master.SetState(EcState.PreOp, out var msg)) throw new Exception($"切换到 PreOp 失败: {msg}");
                     Console.WriteLine("  → PreOp 完成");
                 }
                 {
-                    var (ok, msg) = master.SetState(EcState.SafeOp);
-                    if (!ok) throw new Exception($"切换到 SafeOp 失败: {msg}");
+                    if (!master.SetState(EcState.SafeOp, out var msg)) throw new Exception($"切换到 SafeOp 失败: {msg}");
                     Console.WriteLine("  → SafeOp 完成");
                 }
                 {
-                    var (ok, msg) = master.SetState(EcState.OP);
-                    if (!ok) throw new Exception($"切换到 OP 失败: {msg}");
+                    if (!master.SetState(EcState.OP, out var msg)) throw new Exception($"切换到 OP 失败: {msg}");
                     Console.WriteLine("  → OP 完成");
                 }
                 Console.WriteLine($"主站已进入 OP 状态");
 
                 // PDO 映射 (ref 引用指向共享内存，地址固定，只需获取一次)
-                ref var input1 = ref master.Slaves[0].PDO.InputsMapping<Slave1_InputPDO>();
+                ref readonly var input1 = ref master.Slaves[0].PDO.InputsMapping<Slave1_InputPDO>();
                 ref var output1 = ref master.Slaves[0].PDO.OutputsMapping<Slave1_OutputPDO>();
 
                 // PDO 读写循环

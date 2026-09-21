@@ -197,8 +197,8 @@
         </deni:MasterIdentity>
         <deni:Metadata>
           <deni:SavedDate>2026-06-17 09:09:27</deni:SavedDate>
-          <deni:SavedBy>Administrator</deni:SavedBy>
-          <deni:MachineName>WIN-20260616EHB</deni:MachineName>
+          <deni:SavedBy></deni:SavedBy>
+          <deni:MachineName></deni:MachineName>
           <deni:DllVersion>0.0.0.0</deni:DllVersion>
         </deni:Metadata>
       </deni:MasterConfig>

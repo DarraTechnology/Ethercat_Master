@@ -8,31 +8,27 @@
     ".NETCoreApp,Version=v8.0": {
       "EtherCATRestore/1.0.0": {
         "dependencies": {
-          "Darra.EtherCAT.Master": "2.7.0"
+          "Darra.EtherCAT.Master": "2.9.140"
         },
         "runtime": {
           "EtherCATRestore.dll": {}
         }
       },
-      "Darra.EtherCAT.Master/2.7.0": {
+      "Darra.EtherCAT.Master/2.9.140": {
         "dependencies": {
           "System.ServiceProcess.ServiceController": "7.0.1"
         },
         "runtime": {
           "lib/netstandard2.0/DarraEtherCAT.dll": {
-            "assemblyVersion": "2.7.0.0",
-            "fileVersion": "2.7.0.0"
-          },
-          "lib/netstandard2.0/VMProtect.SDK.dll": {
-            "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.0.0.0"
+            "assemblyVersion": "2.9.140.0",
+            "fileVersion": "2.9.140.0"
           }
         },
         "runtimeTargets": {
           "runtimes/win-x64/native/Darra.Core.dll": {
             "rid": "win-x64",
             "assetType": "native",
-            "fileVersion": "2.7.0.0"
+            "fileVersion": "2.9.0.139"
           }
         }
       },
@@ -85,12 +81,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Darra.EtherCAT.Master/2.7.0": {
+    "Darra.EtherCAT.Master/2.9.140": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-FhYkjPIE2uuLEpZIpwxDvU5P5pfnsEVt0Rl+NjMfQu66mWHBWw6cm3MftrV2V+gCQ5jOijOmnIcAzKGAndvctA==",
-      "path": "darra.ethercat.master/2.7.0",
-      "hashPath": "darra.ethercat.master.2.7.0.nupkg.sha512"
+      "sha512": "sha512-XLkRoa7gW/KV3E7Z5sDz54QJz2JPIjhApI10YherEDtwefx6oFNKpTm2pR5BDOo7tUz/oQJo+M1PHRKXLqpyrg==",
+      "path": "darra.ethercat.master/2.9.140",
+      "hashPath": "darra.ethercat.master.2.9.140.nupkg.sha512"
     },
     "System.Diagnostics.EventLog/7.0.0": {
       "type": "package",

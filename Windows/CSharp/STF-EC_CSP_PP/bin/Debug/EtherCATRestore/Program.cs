@@ -120,7 +120,7 @@ namespace EtherCATRestore
                         tick = 0;
                         for (int i = 0; i < n; i++)
                         {
-                            ref var input = ref master.Slaves[i].PDO.InputsMapping<Slave1_InputPDO>();
+                            ref readonly var input = ref master.Slaves[i].PDO.InputsMapping<Slave1_InputPDO>();
                             Console.WriteLine($"  轴{i + 1}: SW=0x{input.StatusWord:X4} Err=0x{input.ErrorCode:X4} Pos={input.PositionActualValue}");
                         }
                     }

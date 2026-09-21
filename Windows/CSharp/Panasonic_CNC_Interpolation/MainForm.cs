@@ -1041,7 +1041,7 @@ namespace Panasonic_CNC_Interpolation
                     // 逐轴 PDO 初始化 (SafeOp 后, OP 前): CSP, 目标位置 = 当前实际位置 (避免上电跳变)
                     for (int i = 0; i < slaveCount; i++)
                     {
-                        ref var input = ref newMaster.Slaves[i].PDO.InputsMapping<PA_Input>();
+                        ref readonly var input = ref newMaster.Slaves[i].PDO.InputsMapping<PA_Input>();
                         ref var output = ref newMaster.Slaves[i].PDO.OutputsMapping<PA_Output>();
                         output.ModesOfOperation = 8;
                         output.TargetPosition = input.PositionActualValue;
@@ -1053,7 +1053,7 @@ namespace Panasonic_CNC_Interpolation
                     for (int i = 0; i < slaveCount; i++)
                     {
                         ref var tOut = ref newMaster.Slaves[i].PDO.OutputsMapping<PA_Output>();
-                        ref var tIn = ref newMaster.Slaves[i].PDO.InputsMapping<PA_Input>();
+                        ref readonly var tIn = ref newMaster.Slaves[i].PDO.InputsMapping<PA_Input>();
                         tOut.ControlWord = 0;
                         tOut.ModesOfOperation = 8;
                         tOut.TargetPosition = tIn.PositionActualValue;
@@ -1257,7 +1257,7 @@ namespace Panasonic_CNC_Interpolation
                     _segReorigin = false;
                     for (int i = 0; i < arr.Length; i++)
                     {
-                        ref var input = ref m.Slaves[arr[i].SlaveIndex].PDO.InputsMapping<PA_Input>();
+                        ref readonly var input = ref m.Slaves[arr[i].SlaveIndex].PDO.InputsMapping<PA_Input>();
                         arr[i].Origin = input.PositionActualValue;
                         arr[i].CurrentTarget = input.PositionActualValue;
                         arr[i].GraceResetPending = true;
@@ -1325,7 +1325,7 @@ namespace Panasonic_CNC_Interpolation
                 for (int i = 0; i < arr.Length; i++)
                 {
                     var a = arr[i];
-                    ref var input = ref m.Slaves[a.SlaveIndex].PDO.InputsMapping<PA_Input>();
+                    ref readonly var input = ref m.Slaves[a.SlaveIndex].PDO.InputsMapping<PA_Input>();
                     ref var output = ref m.Slaves[a.SlaveIndex].PDO.OutputsMapping<PA_Output>();
 
                     // 本轴目标 mm (按角色取 G 代码坐标分量); 禁用轴或无坐标 → 保持实际位置
@@ -1357,7 +1357,7 @@ namespace Panasonic_CNC_Interpolation
                         desired = (int)tgt;
                     }
                     else desired = 0;
-                    StepAxis(a, desired, drive, ref input, ref output);
+                    StepAxis(a, desired, drive, in input, ref output);
 
                     ushort sw = input.StatusWord;
                     a.SnapStatusWord = sw;
@@ -1468,7 +1468,7 @@ namespace Panasonic_CNC_Interpolation
 
         // CSP 单轴: CiA402 使能握手 (0x06→0x07→0x0F), 使能后下发插补目标位置。
         // 未使能 / 正在握手 / 故障 / 不驱动时, 目标位置恒等于当前实际位置 (无跳变)。
-        void StepAxis(AxisController a, int desiredTarget, bool drive, ref PA_Input input, ref PA_Output output)
+        void StepAxis(AxisController a, int desiredTarget, bool drive, in PA_Input input, ref PA_Output output)
         {
             output.ModesOfOperation = 8;
             ushort sw = input.StatusWord;
